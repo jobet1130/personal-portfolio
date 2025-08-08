@@ -274,7 +274,7 @@ jobs:
         delete-branch: false
 
   deploy-to-main:
-    name: Deploy to Main
+    name: Deploy to Master
     if: github.ref == 'refs/heads/postTest'
     runs-on: ubuntu-latest
     needs: [test, build]
