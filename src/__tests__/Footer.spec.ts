@@ -1,7 +1,6 @@
 import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import Footer from '../components/Footer.vue'
-
 describe('Footer.vue', () => {
   it('renders properly', () => {
     const wrapper = mount(Footer)

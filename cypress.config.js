@@ -1,9 +1,9 @@
-const { defineConfig } = require('cypress')
+import { defineConfig } from 'cypress'
 
-module.exports = defineConfig({
+export default defineConfig({
   e2e: {
     baseUrl: 'http://localhost:5173',
-    setupNodeEvents(on, config) {
+    setupNodeEvents(_on, _config) {
       // implement node event listeners here
     },
     specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
@@ -20,8 +20,11 @@ module.exports = defineConfig({
     devServer: {
       framework: 'vue',
       bundler: 'vite',
+      viteConfig: {
+        configFile: 'vite.config.ts',
+      },
     },
-    specPattern: 'src/**/*.cy.{js,jsx,ts,tsx}',
+    specPattern: 'cypress/component/**/*.cy.{js,jsx,ts,tsx}',
     supportFile: 'cypress/support/component.ts',
   },
 })

@@ -6,6 +6,7 @@ import App from '../App.vue'
 describe('App', () => {
   it('mounts renders properly', () => {
     const wrapper = mount(App)
-    expect(wrapper.text()).toContain('You did it!')
+    expect(wrapper.text()).toContain('Jobet P. Casquejo')
+    expect(wrapper.text()).toContain('Salesforce Developer')
   })
 })

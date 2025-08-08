@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { mount } from '@vue/test-utils'
+import { mount, VueWrapper } from '@vue/test-utils'
 import Navbar from '../components/Navbar.vue'
 
 // Mock scrollIntoView
@@ -9,7 +9,7 @@ Object.defineProperty(window, 'scrollIntoView', {
 })
 
 describe('Navbar.vue', () => {
-  let wrapper: any
+  let wrapper: VueWrapper
 
   beforeEach(() => {
     wrapper = mount(Navbar)
@@ -21,7 +21,7 @@ describe('Navbar.vue', () => {
   })
 
   it('displays brand name', () => {
-    const brand = wrapper.find('.nav-brand h1')
+    const brand = wrapper.find('.nav-brand .brand-text')
     expect(brand.exists()).toBe(true)
     expect(brand.text()).toBe('Portfolio')
   })
@@ -66,7 +66,7 @@ describe('Navbar.vue', () => {
     const mockElement = {
       scrollIntoView: vi.fn()
     }
-    vi.spyOn(document, 'getElementById').mockReturnValue(mockElement as any)
+    vi.spyOn(document, 'getElementById').mockReturnValue(mockElement as HTMLElement)
     
     const homeLink = wrapper.find('.nav-links a[href="#home"]')
     await homeLink.trigger('click')

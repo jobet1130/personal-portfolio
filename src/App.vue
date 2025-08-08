@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import Layout from './components/Layout.vue'
+import Hero from './components/Hero.vue'
 </script>
 
 <template>
   <Layout>
-    <div id="home" class="section">
-      <h1>Welcome to My Portfolio</h1>
-      <p>A modern portfolio website built with Vue 3 and TypeScript</p>
-    </div>
+    <Hero />
     
     <div id="about" class="section">
       <h2>About Me</h2>
@@ -31,6 +29,42 @@ import Layout from './components/Layout.vue'
   </Layout>
 </template>
 
+<style>
+/* Global CSS Variables */
+:root {
+  --primary-color: #3b82f6;
+  --primary-hover: #2563eb;
+  --bg-color: #ffffff;
+  --bg-secondary: #f8fafc;
+  --text-color: #1e293b;
+  --text-secondary: #64748b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #60a5fa;
+    --primary-hover: #3b82f6;
+    --bg-color: #0f172a;
+    --bg-secondary: #1e293b;
+    --text-color: #f1f5f9;
+    --text-secondary: #cbd5e1;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+</style>
+
 <style scoped>
 .section {
   min-height: 100vh;
@@ -43,24 +77,24 @@ import Layout from './components/Layout.vue'
 }
 
 .section:nth-child(even) {
-  background-color: #f8f9fa;
+  background-color: var(--bg-secondary);
 }
 
 h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: #2c3e50;
+  color: var(--text-color);
 }
 
 h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #34495e;
+  color: var(--text-color);
 }
 
 p {
   font-size: 1.2rem;
-  color: #7f8c8d;
+  color: var(--text-secondary);
   max-width: 600px;
 }
 </style>
