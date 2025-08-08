@@ -30,7 +30,6 @@ env:
   NODE_VERSION: '20'
   REGISTRY: docker.io
   IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/personal-portfolio
-  NOTIFICATION_EMAIL: ${{ secrets.NOTIFICATION_EMAIL }}
 
 jobs:
   test:
@@ -468,7 +467,7 @@ jobs:
           username: ${{ secrets.GMAIL_USERNAME }}
           password: ${{ secrets.GMAIL_APP_PASSWORD }}
           subject: '🚨 CI/CD Pipeline Failed - ${{ github.repository }}'
-          to: ${{ env.NOTIFICATION_EMAIL }}
+          to: ${{ secrets.NOTIFICATION_EMAIL }}
           from: ${{ secrets.GMAIL_USERNAME }}
           html_body: |
             <h2>🚨 CI/CD Pipeline Failure Alert</h2>
