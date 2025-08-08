@@ -66,7 +66,7 @@ describe('Navbar.vue', () => {
     const mockElement = {
       scrollIntoView: vi.fn()
     }
-    vi.spyOn(document, 'getElementById').mockReturnValue(mockElement as HTMLElement)
+    vi.spyOn(document, 'getElementById').mockReturnValue(mockElement as unknown as HTMLElement)
     
     const homeLink = wrapper.find('.nav-links a[href="#home"]')
     await homeLink.trigger('click')
