@@ -4,7 +4,25 @@
 
 To enable email notifications and error handling in the CI/CD pipeline, you need to configure the following GitHub secrets:
 
-### 1. Gmail Configuration
+### 1. DockerHub Configuration
+
+#### `DOCKERHUB_USERNAME`
+- **Description**: Your DockerHub username
+- **Example**: `your-dockerhub-username`
+- **Setup**: Go to GitHub Repository → Settings → Secrets and variables → Actions → New repository secret
+
+#### `DOCKERHUB_TOKEN`
+- **Description**: DockerHub Access Token (not your DockerHub password)
+- **Setup Steps**:
+  1. Log in to DockerHub (https://hub.docker.com/)
+  2. Go to Account Settings → Security → Access Tokens
+  3. Click "New Access Token"
+  4. Give it a name (e.g., "GitHub Actions")
+  5. Select permissions: Read, Write, Delete
+  6. Generate and copy the token
+  7. Use this token as the secret value
+
+### 2. Gmail Configuration
 
 #### `GMAIL_USERNAME`
 - **Description**: Your Gmail email address that will send the notifications
@@ -25,12 +43,19 @@ To enable email notifications and error handling in the CI/CD pipeline, you need
 - **Example**: `team@company.com` or `your-email@gmail.com`
 - **Note**: Can be the same as GMAIL_USERNAME or different
 
-### 2. Setting up GitHub Secrets
+### 3. Setting up GitHub Secrets
 
 1. Navigate to your GitHub repository
 2. Go to **Settings** → **Secrets and variables** → **Actions**
 3. Click **New repository secret**
 4. Add each secret with the exact names above
+
+**Required Secrets Summary:**
+- `DOCKERHUB_USERNAME` - Your DockerHub username
+- `DOCKERHUB_TOKEN` - DockerHub access token
+- `GMAIL_USERNAME` - Gmail address for sending notifications
+- `GMAIL_APP_PASSWORD` - Gmail app password
+- `NOTIFICATION_EMAIL` - Email to receive notifications
 
 ## Pipeline Features
 
