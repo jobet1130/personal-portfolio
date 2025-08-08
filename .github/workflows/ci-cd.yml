@@ -146,8 +146,8 @@ jobs:
 
   # deploy-to-main job removed - use manual workflow_dispatch instead
 
-  manual-deploy:
-    name: Manual Deployment
+  manual-validation:
+    name: Manual Validation (No Deployment)
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     needs: [test, build, docker]
@@ -180,31 +180,31 @@ jobs:
           npm run test:unit
           npm run build
 
-      - name: Deploy to target branch
+      - name: Validation Complete
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-
-          # Create or update target branch
-          git checkout -B ${{ github.event.inputs.target_branch }}
-
-          # Push to target branch
-          git push origin ${{ github.event.inputs.target_branch }} --force
-
-      - name: Manual Branch Promotion Complete
-        run: |
-          echo "✅ Manual branch promotion completed successfully!"
-          echo "📋 Summary:"
+          echo "🔍 Code validation completed for promotion:"
           echo "   Source: ${{ github.event.inputs.source_branch }}"
           echo "   Target: ${{ github.event.inputs.target_branch }}"
+          echo "   All tests and builds passed ✅"
+          echo "   Ready for manual PR creation and review"
+
+      - name: Manual Process Required
+        run: |
+          echo "✅ Code validation completed - NO AUTOMATIC DEPLOYMENT PERFORMED"
+          echo "📋 Validation Summary:"
+          echo "   Source Branch: ${{ github.event.inputs.source_branch }}"
+          echo "   Target Branch: ${{ github.event.inputs.target_branch }}"
           echo "   Tests: All passed ✅"
           echo "   Build: Successful ✅"
+          echo "   Deployment: NONE - Manual action required ⚠️"
           echo ""
-          echo "🔄 Next Steps:"
+          echo "🔄 Required Manual Steps:"
           echo "   1. Create a Pull Request manually from ${{ github.event.inputs.source_branch }} to ${{ github.event.inputs.target_branch }}"
-          echo "   2. Review the changes carefully"
-          echo "   3. Merge the PR manually when ready"
-          echo "   4. Continue to next stage: develop → preTest → postTest → master"
+          echo "   2. Add reviewers and review the changes carefully"
+          echo "   3. Merge the PR manually when approved"
+          echo "   4. Only then proceed to next stage: develop → preTest → postTest → master"
+          echo ""
+          echo "⚠️  IMPORTANT: This workflow performed NO deployments or branch updates"
 
   deploy:
     name: Deploy to Production

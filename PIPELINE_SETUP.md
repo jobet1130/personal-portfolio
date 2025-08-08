@@ -91,12 +91,12 @@ develop → preTest → postTest → master
 
 ### 📋 Manual Process
 
-1. **Promote Branch via Workflow Dispatch:**
+1. **Validate Code via Workflow Dispatch:**
    - Go to GitHub Actions tab
    - Click "Run workflow" on the CI/CD Pipeline
    - Select source branch (e.g., `develop`)
    - Select target branch (e.g., `preTest`)
-   - Run the workflow
+   - Run the workflow (performs validation only - NO deployment)
 
 2. **Create Pull Request Manually:**
    - After workflow completes, create a PR manually
@@ -114,10 +114,12 @@ develop → preTest → postTest → master
    - preTest → postTest → master
 
 ### ⚠️ Important Notes
+- **NO AUTOMATIC DEPLOYMENTS** - Workflow only validates code
 - **All PR creation is manual**
 - **All merging is manual**
-- **No automatic deployments**
+- **All branch updates are manual**
 - **Full control over each stage**
+- **Workflow dispatch only runs tests and builds - no code is deployed**
 
 ## Testing the Setup
 
