@@ -1,0 +1,285 @@
+name: Branch Deployment Sequence
+
+on:
+  push:
+    branches:
+      - develop
+      - preTest
+      - postTest
+  workflow_dispatch:
+    inputs:
+      source_branch:
+        description: 'Source branch to deploy from'
+        required: true
+        default: 'develop'
+        type: choice
+        options:
+          - develop
+          - preTest
+          - postTest
+      target_branch:
+        description: 'Target branch to deploy to'
+        required: true
+        default: 'preTest'
+        type: choice
+        options:
+          - preTest
+          - postTest
+          - main
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  # Job 1: Deploy from develop to preTest
+  deploy-to-pretest:
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+    - name: Checkout develop branch
+      uses: actions/checkout@v4
+      with:
+        ref: develop
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run tests
+      run: |
+        npm run lint
+        npm run type-check
+        npm run test:unit
+    
+    - name: Build application
+      run: npm run build
+    
+    - name: Create or update preTest branch
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Create preTest branch if it doesn't exist
+        git checkout -B preTest
+        
+        # Push to preTest branch
+        git push origin preTest --force
+    
+    - name: Create Pull Request to preTest
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: preTest
+        base: preTest
+        title: 'Auto-deploy: develop → preTest'
+        body: |
+          🚀 **Automated Deployment: develop → preTest**
+          
+          This PR was automatically created by the branch deployment workflow.
+          
+          **Changes:**
+          - Latest changes from develop branch
+          - All tests passed ✅
+          - Build successful ✅
+          
+          **Next Steps:**
+          - Review and merge this PR
+          - This will trigger deployment to postTest
+        delete-branch: false
+
+  # Job 2: Deploy from preTest to postTest
+  deploy-to-posttest:
+    if: github.ref == 'refs/heads/preTest'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+    - name: Checkout preTest branch
+      uses: actions/checkout@v4
+      with:
+        ref: preTest
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run comprehensive tests
+      run: |
+        npm run lint
+        npm run type-check
+        npm run test:unit
+        npm run build
+    
+    - name: Create or update postTest branch
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Create postTest branch if it doesn't exist
+        git checkout -B postTest
+        
+        # Push to postTest branch
+        git push origin postTest --force
+    
+    - name: Create Pull Request to postTest
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: postTest
+        base: postTest
+        title: 'Auto-deploy: preTest → postTest'
+        body: |
+          🚀 **Automated Deployment: preTest → postTest**
+          
+          This PR was automatically created by the branch deployment workflow.
+          
+          **Changes:**
+          - Latest changes from preTest branch
+          - Pre-testing completed ✅
+          - All tests passed ✅
+          - Build successful ✅
+          
+          **Next Steps:**
+          - Review and merge this PR
+          - This will trigger deployment to main
+        delete-branch: false
+
+  # Job 3: Deploy from postTest to main
+  deploy-to-main:
+    if: github.ref == 'refs/heads/postTest'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+    - name: Checkout postTest branch
+      uses: actions/checkout@v4
+      with:
+        ref: postTest
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run final tests and build
+      run: |
+        npm run lint
+        npm run type-check
+        npm run test:unit
+        npm run build
+    
+    - name: Create Pull Request to main
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: postTest
+        base: main
+          title: 'Production Deploy: postTest → main'
+        body: |
+          🚀 **Production Deployment: postTest → main**
+          
+          This PR was automatically created by the branch deployment workflow.
+          
+          **Changes:**
+          - Latest changes from postTest branch
+          - Pre-testing completed ✅
+          - Post-testing completed ✅
+          - All tests passed ✅
+          - Build successful ✅
+          
+          **⚠️ PRODUCTION DEPLOYMENT**
+          Please review carefully before merging to main.
+        delete-branch: false
+
+  # Manual deployment job
+  manual-deploy:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+    - name: Checkout source branch
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.inputs.source_branch }}
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run tests
+      run: |
+        npm run lint
+        npm run type-check
+        npm run test:unit
+        npm run build
+    
+    - name: Deploy to target branch
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Create or update target branch
+        git checkout -B ${{ github.event.inputs.target_branch }}
+        
+        # Push to target branch
+        git push origin ${{ github.event.inputs.target_branch }} --force
+    
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.event.inputs.target_branch }}
+        base: ${{ github.event.inputs.target_branch }}
+        title: 'Manual Deploy: ${{ github.event.inputs.source_branch }} → ${{ github.event.inputs.target_branch }}'
+        body: |
+          🚀 **Manual Deployment: ${{ github.event.inputs.source_branch }} → ${{ github.event.inputs.target_branch }}**
+          
+          This PR was manually triggered by the branch deployment workflow.
+          
+          **Source Branch:** `${{ github.event.inputs.source_branch }}`
+          **Target Branch:** `${{ github.event.inputs.target_branch }}`
+          
+          **Tests Status:**
+          - Linting ✅
+          - Type checking ✅
+          - Unit tests ✅
+          - Build ✅
+        delete-branch: false
