@@ -242,10 +242,7 @@ jobs:
         test,
         build,
         docker,
-        deploy-to-pretest,
-        deploy-to-posttest,
-        deploy-to-main,
-        manual-deploy,
+        manual-validation,
         deploy,
       ]
 
@@ -315,10 +312,7 @@ jobs:
       test,
       build,
       docker,
-      deploy-to-pretest,
-      deploy-to-posttest,
-      deploy-to-main,
-      manual-deploy,
+      manual-validation,
       deploy,
     ]
 
