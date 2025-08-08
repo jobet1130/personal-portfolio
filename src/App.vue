@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Layout from './components/Layout.vue'
 import Hero from './components/Hero.vue'
+import Skills from './components/Skills.vue'
 </script>
 
 <template>
@@ -12,10 +13,7 @@ import Hero from './components/Hero.vue'
       <p>I'm a passionate developer with experience in modern web technologies.</p>
     </div>
     
-    <div id="skills" class="section">
-      <h2>Skills</h2>
-      <p>My technical expertise and capabilities.</p>
-    </div>
+    <Skills />
     
     <div id="projects" class="section">
       <h2>Projects</h2>
