@@ -66,8 +66,8 @@ To enable email notifications and error handling in the CI/CD pipeline, you need
 - **Comprehensive Logging**: Captures detailed error information
 
 ### 📧 Email Notifications Include
-- **Success Notifications**: Sent when pipeline completes successfully
-- **Failure Notifications**: Sent when any job fails
+- **Success Notifications**: Sent when manually triggered workflow completes successfully
+- **Failure Notifications**: Sent automatically when any job fails
 - Repository and branch information
 - Commit details and author
 - Direct links to workflow and commit
@@ -82,7 +82,14 @@ To enable email notifications and error handling in the CI/CD pipeline, you need
 
 ## Testing the Setup
 
-### 1. Test Email Notifications
+### 1. Test Success Notifications
+- Go to GitHub Actions tab in your repository
+- Click "Run workflow" on the CI/CD Pipeline
+- Select source and target branches
+- Run the workflow manually
+- Verify you receive a success email when completed
+
+### 2. Test Failure Notifications
 ```bash
 # Intentionally break a test to trigger failure notification
 echo "describe('broken test', () => { it('should fail', () => { expect(true).toBe(false); }); });" >> src/__tests__/test-failure.spec.ts
@@ -91,12 +98,17 @@ git commit -m "test: trigger pipeline failure for testing"
 git push
 ```
 
-### 2. Verify Secrets
+### 3. Test Auto-Revert (Critical Branches)
+- Push a failing commit to `master` or `main`
+- Verify the pipeline reverts the commit
+- Check for revert notification email
+
+### 4. Verify Secrets
 - Check that all three secrets are properly configured in GitHub
 - Ensure Gmail App Password is correctly generated
 - Verify notification email address is correct
 
-### 3. Monitor Pipeline
+### 5. Monitor Pipeline
 - Go to Actions tab in your GitHub repository
 - Watch for the failure notification job to run
 - Check your email for the failure notification

@@ -503,7 +503,7 @@ jobs:
 
   notify-on-success:
     runs-on: ubuntu-latest
-    if: success()
+    if: success() && github.event_name == 'workflow_dispatch'
     needs: [
       test,
       build,
