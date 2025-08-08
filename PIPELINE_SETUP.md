@@ -6,12 +6,12 @@ To enable email notifications and error handling in the CI/CD pipeline, you need
 
 ### 1. DockerHub Configuration
 
-#### `DOCKERHUB_USERNAME`
+#### `DOCKER_USERNAME`
 - **Description**: Your DockerHub username
 - **Example**: `your-dockerhub-username`
 - **Setup**: Go to GitHub Repository → Settings → Secrets and variables → Actions → New repository secret
 
-#### `DOCKERHUB_TOKEN`
+#### `DOCKER_PASSWORD`
 - **Description**: DockerHub Access Token (not your DockerHub password)
 - **Setup Steps**:
   1. Log in to DockerHub (https://hub.docker.com/)
@@ -51,8 +51,8 @@ To enable email notifications and error handling in the CI/CD pipeline, you need
 4. Add each secret with the exact names above
 
 **Required Secrets Summary:**
-- `DOCKERHUB_USERNAME` - Your DockerHub username
-- `DOCKERHUB_TOKEN` - DockerHub access token
+- `DOCKER_USERNAME` - Your DockerHub username
+- `DOCKER_PASSWORD` - DockerHub access token
 - `GMAIL_USERNAME` - Gmail address for sending notifications
 - `GMAIL_APP_PASSWORD` - Gmail app password
 - `NOTIFICATION_EMAIL` - Email to receive notifications
