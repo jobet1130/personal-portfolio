@@ -80,25 +80,70 @@ To enable email notifications and error handling in the CI/CD pipeline, you need
 - **Notification**: Sends separate email about revert completion
 - **Safety**: Restores repository to previous stable state
 
+## Branch Promotion Workflow
+
+The CI/CD pipeline now uses a **fully manual** branch promotion strategy:
+
+### 🔄 Deployment Flow
+```
+develop → preTest → postTest → master
+```
+
+### 📋 Manual Process
+
+1. **Promote Branch via Workflow Dispatch:**
+   - Go to GitHub Actions tab
+   - Click "Run workflow" on the CI/CD Pipeline
+   - Select source branch (e.g., `develop`)
+   - Select target branch (e.g., `preTest`)
+   - Run the workflow
+
+2. **Create Pull Request Manually:**
+   - After workflow completes, create a PR manually
+   - From source branch to target branch
+   - Review changes carefully
+   - Add appropriate reviewers
+
+3. **Manual Merge:**
+   - Review and approve the PR
+   - Merge manually when ready
+   - No automatic merging
+
+4. **Repeat for Next Stage:**
+   - Continue the process for next promotion
+   - preTest → postTest → master
+
+### ⚠️ Important Notes
+- **All PR creation is manual**
+- **All merging is manual**
+- **No automatic deployments**
+- **Full control over each stage**
+
 ## Testing the Setup
 
-### 1. Test Success Notifications
+### 1. Test Manual Branch Promotion
 - Go to GitHub Actions tab in your repository
 - Click "Run workflow" on the CI/CD Pipeline
-- Select source and target branches
+- Select `develop` as source, `preTest` as target
 - Run the workflow manually
+- Verify workflow completes successfully
+- Create PR manually from develop to preTest
+- Review and merge manually
+
+### 2. Test Success Notifications (Manual Trigger Only)
+- Use workflow_dispatch to trigger success notifications
 - Verify you receive a success email when completed
 
-### 2. Test Failure Notifications
+### 3. Test Failure Notifications (Automatic)
 ```bash
 # Intentionally break a test to trigger failure notification
-echo "describe('broken test', () => { it('should fail', () => { expect(true).toBe(false); }); });" >> src/__tests__/test-failure.spec.ts
+echo "describe('broken test', () => { it('should fail', () => { expect(true).toBe(false); }); });" > src/__tests__/broken.spec.ts
 git add .
-git commit -m "test: trigger pipeline failure for testing"
+git commit -m "Add broken test"
 git push
 ```
 
-### 3. Test Auto-Revert (Critical Branches)
+### 4. Test Auto-Revert (Critical Branches)
 - Push a failing commit to `master` or `main`
 - Verify the pipeline reverts the commit
 - Check for revert notification email
