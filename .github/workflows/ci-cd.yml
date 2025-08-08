@@ -501,6 +501,79 @@ jobs:
             <hr>
             <p><small>This is an automated notification from the CI/CD pipeline.</small></p>
 
+  notify-on-success:
+    runs-on: ubuntu-latest
+    if: success()
+    needs: [
+      test,
+      build,
+      docker,
+      deploy-to-pretest,
+      deploy-to-posttest,
+      deploy-to-main,
+      manual-deploy,
+      deploy,
+    ]
+
+    permissions:
+      contents: read
+      actions: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get success job details
+        id: success-job
+        run: |
+          echo "workflow_run_id=${{ github.run_id }}" >> $GITHUB_OUTPUT
+          echo "workflow_url=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_OUTPUT
+          echo "commit_sha=${{ github.sha }}" >> $GITHUB_OUTPUT
+          echo "branch_name=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+          echo "actor=${{ github.actor }}" >> $GITHUB_OUTPUT
+
+      - name: Send success notification email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.GMAIL_USERNAME }}
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          subject: '✅ CI/CD Pipeline Successful - ${{ github.repository }}'
+          to: ${{ secrets.NOTIFICATION_EMAIL }}
+          from: ${{ secrets.GMAIL_USERNAME }}
+          html_body: |
+            <h2>✅ CI/CD Pipeline Success</h2>
+
+            <p>Great news! The CI/CD pipeline has completed successfully.</p>
+
+            <h3>📋 Pipeline Details:</h3>
+            <ul>
+              <li><strong>Repository:</strong> ${{ github.repository }}</li>
+              <li><strong>Branch:</strong> ${{ github.ref_name }}</li>
+              <li><strong>Commit:</strong> ${{ github.sha }}</li>
+              <li><strong>Triggered by:</strong> ${{ github.actor }}</li>
+              <li><strong>Workflow:</strong> ${{ github.workflow }}</li>
+              <li><strong>Run ID:</strong> ${{ github.run_id }}</li>
+            </ul>
+
+            <h3>🚀 Completed Jobs:</h3>
+            <ul>
+              <li>✅ Tests passed</li>
+              <li>✅ Build successful</li>
+              <li>✅ Docker image created</li>
+              <li>✅ Deployment completed</li>
+            </ul>
+
+            <h3>🔗 Quick Links:</h3>
+            <p>
+              <a href="https://github.com/${{ github.repository }}/commit/${{ github.sha }}" style="background-color: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">View Commit</a>
+              <a href="${{ steps.success-job.outputs.workflow_url }}" style="background-color: #007bff; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View Workflow</a>
+            </p>
+
+            <hr>
+            <p><small>This is an automated notification from the CI/CD pipeline.</small></p>
+
       - name: Revert on critical failure
         if: contains(github.ref, 'master') || contains(github.ref, 'main')
         run: |
@@ -531,7 +604,7 @@ jobs:
           username: ${{ secrets.GMAIL_USERNAME }}
           password: ${{ secrets.GMAIL_APP_PASSWORD }}
           subject: '🔄 Auto-Revert Completed - ${{ github.repository }}'
-          to: ${{ env.NOTIFICATION_EMAIL }}
+          to: ${{ secrets.NOTIFICATION_EMAIL }}
           from: ${{ secrets.GMAIL_USERNAME }}
           html_body: |
             <h2>🔄 Automatic Revert Completed</h2>

@@ -66,10 +66,12 @@ To enable email notifications and error handling in the CI/CD pipeline, you need
 - **Comprehensive Logging**: Captures detailed error information
 
 ### 📧 Email Notifications Include
+- **Success Notifications**: Sent when pipeline completes successfully
+- **Failure Notifications**: Sent when any job fails
 - Repository and branch information
 - Commit details and author
-- Direct links to failed workflow and commit
-- Step-by-step recovery instructions
+- Direct links to workflow and commit
+- Step-by-step recovery instructions (for failures)
 - Automatic revert notifications (for critical failures)
 
 ### 🔄 Auto-Revert Process
