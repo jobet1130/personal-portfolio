@@ -53,8 +53,7 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   position: relative;
-  background: linear-gradient(135deg, var(--bg-color) 0%, var(--bg-secondary) 100%);
-  padding: 2rem 1rem;
+  padding: 0 1rem 2rem 1rem;
   text-align: center;
 }
 
