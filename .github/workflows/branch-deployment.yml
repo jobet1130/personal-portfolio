@@ -80,7 +80,7 @@ jobs:
       uses: peter-evans/create-pull-request@v5
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        branch: preTest
+        branch: develop-to-pretest-${{ github.run_number }}
         base: preTest
         title: 'Auto-deploy: develop → preTest'
         body: |
@@ -145,7 +145,7 @@ jobs:
       uses: peter-evans/create-pull-request@v5
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        branch: postTest
+        branch: pretest-to-posttest-${{ github.run_number }}
         base: postTest
         title: 'Auto-deploy: preTest → postTest'
         body: |
@@ -200,7 +200,7 @@ jobs:
       uses: peter-evans/create-pull-request@v5
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        branch: postTest
+        branch: posttest-to-main-${{ github.run_number }}
         base: main
         title: 'Production Deploy: postTest → main'
         body: |
