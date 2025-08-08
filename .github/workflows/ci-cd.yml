@@ -30,6 +30,7 @@ env:
   NODE_VERSION: '20'
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  NOTIFICATION_EMAIL: ${{ secrets.NOTIFICATION_EMAIL }}
 
 jobs:
   test:
@@ -424,3 +425,126 @@ jobs:
 
       - name: Deployment success
         run: echo "✅ Deployment completed successfully!"
+
+  # Error Handling and Notification Job
+  notify-on-failure:
+    name: Notify on Pipeline Failure
+    runs-on: ubuntu-latest
+    if: failure()
+    needs: [test, build, docker, deploy-to-pretest, deploy-to-posttest, deploy-to-main, manual-deploy, deploy]
+    
+    permissions:
+      contents: write
+      actions: read
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Get failed job details
+        id: failed-job
+        run: |
+          echo "workflow_run_id=${{ github.run_id }}" >> $GITHUB_OUTPUT
+          echo "workflow_url=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_OUTPUT
+          echo "commit_sha=${{ github.sha }}" >> $GITHUB_OUTPUT
+          echo "branch_name=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+          echo "actor=${{ github.actor }}" >> $GITHUB_OUTPUT
+      
+      - name: Send failure notification email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.GMAIL_USERNAME }}
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          subject: "🚨 CI/CD Pipeline Failed - ${{ github.repository }}"
+          to: ${{ env.NOTIFICATION_EMAIL }}
+          from: ${{ secrets.GMAIL_USERNAME }}
+          html_body: |
+            <h2>🚨 CI/CD Pipeline Failure Alert</h2>
+            
+            <p><strong>Repository:</strong> ${{ github.repository }}</p>
+            <p><strong>Branch:</strong> ${{ github.ref_name }}</p>
+            <p><strong>Commit:</strong> ${{ github.sha }}</p>
+            <p><strong>Triggered by:</strong> ${{ github.actor }}</p>
+            <p><strong>Workflow:</strong> ${{ github.workflow }}</p>
+            
+            <h3>📋 Failure Details:</h3>
+            <ul>
+              <li><strong>Run ID:</strong> ${{ github.run_id }}</li>
+              <li><strong>Event:</strong> ${{ github.event_name }}</li>
+              <li><strong>Time:</strong> ${{ github.event.head_commit.timestamp }}</li>
+            </ul>
+            
+            <h3>🔗 Quick Actions:</h3>
+            <p>
+              <a href="${{ steps.failed-job.outputs.workflow_url }}" style="background-color: #dc3545; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">View Failed Workflow</a>
+              <a href="https://github.com/${{ github.repository }}/commit/${{ github.sha }}" style="background-color: #6c757d; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View Commit</a>
+            </p>
+            
+            <h3>🔄 Next Steps:</h3>
+            <ol>
+              <li>Check the workflow logs for detailed error information</li>
+              <li>Fix the issues in your code</li>
+              <li>Push the fixes to trigger a new pipeline run</li>
+            </ol>
+            
+            <hr>
+            <p><small>This is an automated notification from the CI/CD pipeline.</small></p>
+      
+      - name: Revert on critical failure
+        if: contains(github.ref, 'master') || contains(github.ref, 'main')
+        run: |
+          echo "🔄 Critical failure detected on main branch"
+          echo "Initiating revert process..."
+          
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action - Auto Revert"
+          
+          # Get the previous commit
+          PREVIOUS_COMMIT=$(git rev-parse HEAD~1)
+          echo "Previous stable commit: $PREVIOUS_COMMIT"
+          
+          # Create revert commit
+          git revert --no-edit HEAD
+          
+          # Push the revert
+          git push origin ${{ github.ref_name }}
+          
+          echo "✅ Revert completed. Previous stable state restored."
+      
+      - name: Send revert notification
+        if: contains(github.ref, 'master') || contains(github.ref, 'main')
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.GMAIL_USERNAME }}
+          password: ${{ secrets.GMAIL_APP_PASSWORD }}
+          subject: "🔄 Auto-Revert Completed - ${{ github.repository }}"
+          to: ${{ env.NOTIFICATION_EMAIL }}
+          from: ${{ secrets.GMAIL_USERNAME }}
+          html_body: |
+            <h2>🔄 Automatic Revert Completed</h2>
+            
+            <p>Due to a critical failure in the CI/CD pipeline, an automatic revert has been performed on the <strong>${{ github.ref_name }}</strong> branch.</p>
+            
+            <h3>📋 Revert Details:</h3>
+            <ul>
+              <li><strong>Repository:</strong> ${{ github.repository }}</li>
+              <li><strong>Branch:</strong> ${{ github.ref_name }}</li>
+              <li><strong>Failed Commit:</strong> ${{ github.sha }}</li>
+              <li><strong>Reverted by:</strong> GitHub Action</li>
+            </ul>
+            
+            <h3>✅ Current Status:</h3>
+            <p>The repository has been reverted to the previous stable state. The application should now be functioning normally.</p>
+            
+            <h3>🔗 Actions:</h3>
+            <p>
+              <a href="https://github.com/${{ github.repository }}/commits/${{ github.ref_name }}" style="background-color: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">View Commit History</a>
+              <a href="${{ steps.failed-job.outputs.workflow_url }}" style="background-color: #dc3545; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; margin-left: 10px;">View Failed Workflow</a>
+            </p>
+            
+            <hr>
+            <p><small>This is an automated notification from the CI/CD pipeline.</small></p>
