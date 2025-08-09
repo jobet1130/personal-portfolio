@@ -4,7 +4,6 @@ import AboutPage from '../pages/AboutPage.vue'
 import ProjectsPage from '../pages/ProjectsPage.vue'
 import BlogPage from '../pages/BlogPage.vue'
 import ResumePage from '../pages/ResumePage.vue'
-import Resume from '../pages/Resume.vue'
 import NotFound from '../pages/NotFound.vue'
 
 const router = createRouter({
@@ -38,7 +37,7 @@ const router = createRouter({
     {
       path: '/resume',
       name: 'Resume',
-      component: Resume
+      component: ResumePage
     },
     {
       path: '/404',

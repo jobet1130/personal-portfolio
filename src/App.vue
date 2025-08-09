@@ -14,7 +14,7 @@ import Layout from './components/Layout.vue'
   --primary-color: #3b82f6;
   --primary-hover: #2563eb;
   --bg-color: #ffffff;
-  --bg-secondary: #f8fafc;
+  --bg-secondary: #ffffff;
   --text-color: #1e293b;
   --text-secondary: #64748b;
 }
