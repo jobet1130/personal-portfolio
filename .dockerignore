@@ -48,6 +48,10 @@ __tests__
 *.test.ts
 *.spec.js
 *.spec.ts
+cypress
+
+# Robot Framework
+robot
 coverage
 
 # Logs

@@ -18,7 +18,7 @@ export const projects: Project[] = [
     technologies: ['Vue.js', 'TypeScript', 'Node.js', 'Express', 'MongoDB', 'Stripe', 'Tailwind CSS'],
     githubUrl: 'https://github.com/johndoe/ecommerce-platform',
     liveUrl: 'https://ecommerce-demo.example.com',
-    imageUrl: '/images/projects/ecommerce-platform.jpg',
+    imageUrl: '/images/projects/ecommerce-platform.svg',
     featured: true
   },
   {
@@ -28,7 +28,7 @@ export const projects: Project[] = [
     technologies: ['React', 'TypeScript', 'Firebase', 'Material-UI', 'Socket.io'],
     githubUrl: 'https://github.com/johndoe/task-manager',
     liveUrl: 'https://taskmanager-demo.example.com',
-    imageUrl: '/images/projects/task-manager.jpg',
+    imageUrl: '/images/projects/task-manager.svg',
     featured: true
   },
   {
@@ -38,7 +38,7 @@ export const projects: Project[] = [
     technologies: ['Vue.js', 'JavaScript', 'OpenWeather API', 'Chart.js', 'CSS3'],
     githubUrl: 'https://github.com/johndoe/weather-dashboard',
     liveUrl: 'https://weather-dashboard-demo.example.com',
-    imageUrl: '/images/projects/weather-dashboard.jpg',
+    imageUrl: '/images/projects/weather-dashboard.svg',
     featured: false
   },
   {
@@ -48,7 +48,7 @@ export const projects: Project[] = [
     technologies: ['Vue.js', 'TypeScript', 'Vite', 'Tailwind CSS', 'GSAP'],
     githubUrl: 'https://github.com/johndoe/portfolio-website',
     liveUrl: 'https://johndoe-portfolio.example.com',
-    imageUrl: '/images/projects/portfolio-website.jpg',
+    imageUrl: '/images/projects/portfolio-website.svg',
     featured: true
   },
   {
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     technologies: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'NextAuth.js'],
     githubUrl: 'https://github.com/johndoe/blog-cms',
     liveUrl: 'https://blog-cms-demo.example.com',
-    imageUrl: '/images/projects/blog-cms.jpg',
+    imageUrl: '/images/projects/blog-cms.svg',
     featured: false
   },
   {
@@ -67,7 +67,7 @@ export const projects: Project[] = [
     description: 'A mobile-first fitness tracking application with workout logging, progress visualization, goal setting, and social features.',
     technologies: ['React Native', 'TypeScript', 'Redux', 'SQLite', 'Chart.js'],
     githubUrl: 'https://github.com/johndoe/fitness-tracker',
-    imageUrl: '/images/projects/fitness-tracker.jpg',
+    imageUrl: '/images/projects/fitness-tracker.svg',
     featured: false
   }
 ];

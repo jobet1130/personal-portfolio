@@ -1,7 +1,7 @@
 <template>
   <div class="project-card" @mouseenter="$emit('mouseenter')" @mouseleave="$emit('mouseleave')">
     <div class="project-image">
-      <img :src="project.imageUrl || '/images/projects/placeholder.jpg'" :alt="project.title" loading="lazy" />
+      <img :src="project.imageUrl || '/images/projects/placeholder.svg'" :alt="project.title" loading="lazy" />
       <div class="project-overlay">
         <div class="project-links">
           <a v-if="project.liveUrl" :href="project.liveUrl" target="_blank" rel="noopener noreferrer" class="project-link" title="View Live Demo" aria-label="View Live Demo">
@@ -70,6 +70,7 @@ defineEmits<{
   height: 100%;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
 }
 
 .project-card:hover {
@@ -150,30 +151,41 @@ defineEmits<{
 }
 
 .project-content {
-  padding: 1.5rem;
+  padding: 1.25rem;
   flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 0.75rem;
+  min-height: 0;
 }
 
 .project-title {
   font-size: 1.25rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin: 0;
   color: #1a202c;
+  line-height: 1.3;
 }
 
 .project-description {
   color: #4a5568;
   line-height: 1.6;
-  margin-bottom: 1rem;
+  margin: 0;
   flex: 1;
+  min-height: 3.2em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .project-technologies {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-top: auto;
+  align-items: flex-start;
+  min-height: 2rem;
 }
 
 .tech-tag {
@@ -183,6 +195,8 @@ defineEmits<{
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 @media (max-width: 768px) {
@@ -192,6 +206,7 @@ defineEmits<{
   
   .project-content {
     padding: 1rem;
+    gap: 0.75rem;
   }
   
   .project-title {
