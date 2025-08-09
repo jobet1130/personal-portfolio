@@ -1,0 +1,33 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)"/>
+  
+  <!-- Browser Window -->
+  <rect x="50" y="50" width="300" height="200" rx="8" fill="white" opacity="0.95"/>
+  
+  <!-- Browser Header -->
+  <rect x="50" y="50" width="300" height="30" rx="8" fill="#f1f5f9"/>
+  <circle cx="65" cy="65" r="4" fill="#ef4444"/>
+  <circle cx="80" cy="65" r="4" fill="#f59e0b"/>
+  <circle cx="95" cy="65" r="4" fill="#10b981"/>
+  
+  <!-- Shopping Cart Icon -->
+  <g transform="translate(180, 120)">
+    <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5H2M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17M17 13v4a2 2 0 01-2 2H9a2 2 0 01-2-2v-4m8 0V9a2 2 0 00-2-2H11a2 2 0 00-2 2v4.01" stroke="#667eea" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- Product Cards -->
+  <rect x="70" y="100" width="60" height="40" rx="4" fill="#e2e8f0"/>
+  <rect x="140" y="100" width="60" height="40" rx="4" fill="#e2e8f0"/>
+  <rect x="210" y="100" width="60" height="40" rx="4" fill="#e2e8f0"/>
+  
+  <!-- Title -->
+  <text x="200" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">E-Commerce Platform</text>
+</svg>

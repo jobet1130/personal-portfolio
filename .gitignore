@@ -24,6 +24,12 @@ coverage
 /cypress/videos/
 /cypress/screenshots/
 
+# Robot Framework
+/robot/reports/
+*.html
+*.xml
+*.png
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -1,0 +1,48 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blogBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#blogBg)"/>
+  
+  <!-- CMS Interface -->
+  <rect x="40" y="50" width="320" height="200" rx="12" fill="white" opacity="0.95"/>
+  
+  <!-- Header -->
+  <rect x="40" y="50" width="320" height="40" rx="12" fill="#f8fafc"/>
+  <text x="60" y="75" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#374151">Blog CMS Dashboard</text>
+  
+  <!-- Sidebar -->
+  <rect x="50" y="100" width="80" height="140" rx="6" fill="#f1f5f9"/>
+  <rect x="60" y="110" width="60" height="15" rx="3" fill="#06b6d4"/>
+  <rect x="60" y="130" width="60" height="12" rx="2" fill="#d1d5db"/>
+  <rect x="60" y="145" width="60" height="12" rx="2" fill="#d1d5db"/>
+  <rect x="60" y="160" width="60" height="12" rx="2" fill="#d1d5db"/>
+  
+  <!-- Main Content Area -->
+  <rect x="140" y="100" width="200" height="140" rx="6" fill="#ffffff"/>
+  
+  <!-- Article Preview -->
+  <rect x="150" y="110" width="180" height="20" rx="4" fill="#dbeafe"/>
+  <rect x="150" y="135" width="120" height="8" rx="2" fill="#374151"/>
+  <rect x="150" y="148" width="160" height="6" rx="2" fill="#9ca3af"/>
+  <rect x="150" y="158" width="140" height="6" rx="2" fill="#9ca3af"/>
+  <rect x="150" y="168" width="100" height="6" rx="2" fill="#9ca3af"/>
+  
+  <!-- Second Article -->
+  <rect x="150" y="185" width="180" height="20" rx="4" fill="#fef3c7"/>
+  <rect x="150" y="210" width="110" height="8" rx="2" fill="#374151"/>
+  <rect x="150" y="223" width="150" height="6" rx="2" fill="#9ca3af"/>
+  
+  <!-- Edit Icon -->
+  <g transform="translate(300, 120)">
+    <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" stroke="#06b6d4" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="200" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">Blog CMS</text>
+</svg>
