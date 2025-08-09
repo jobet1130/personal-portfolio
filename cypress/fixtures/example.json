@@ -1,0 +1,22 @@
+{
+  "name": "Using fixtures to represent data",
+  "email": "hello@cypress.io",
+  "body": "Fixtures are a great way to mock data for responses to routes",
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "portfolio": {
+    "title": "Personal Portfolio",
+    "description": "A modern portfolio website built with Vue 3 and TypeScript",
+    "skills": [
+      "Vue.js",
+      "TypeScript",
+      "JavaScript",
+      "HTML/CSS"
+    ]
+  }
+}
