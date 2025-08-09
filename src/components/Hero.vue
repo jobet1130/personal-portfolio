@@ -23,12 +23,9 @@
         </div>
       </div>
       <div class="hero-image">
-        <div class="image-placeholder">
-          <svg viewBox="0 0 200 200" class="profile-svg">
-            <circle cx="100" cy="100" r="80" fill="var(--primary-color)" opacity="0.1"/>
-            <circle cx="100" cy="80" r="30" fill="var(--primary-color)" opacity="0.3"/>
-            <path d="M60 140 Q100 120 140 140 Q140 160 100 160 Q60 160 60 140" fill="var(--primary-color)" opacity="0.3"/>
-          </svg>
+        <div class="image-container">
+          <img src="/images/profile.jpg" alt="Jobet P. Casquejo - Salesforce Developer" class="profile-image" />
+          <div class="image-placeholder"></div>
         </div>
       </div>
     </div>
@@ -36,12 +33,12 @@
     <!-- Scroll Indicator -->
     <div class="scroll-indicator">
       <div class="scroll-arrow">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M7 13l3 3 7-7"></path>
+          <path d="M7 6l3 3 7-7"></path>
         </svg>
       </div>
     </div>
-
   </section>
 </template>
 
@@ -167,7 +164,7 @@ onMounted(() => {
   animation: fadeInRight 1s ease-out;
 }
 
-.image-placeholder {
+.image-container {
   width: 300px;
   height: 300px;
   border-radius: 50%;
@@ -176,14 +173,64 @@ onMounted(() => {
   justify-content: center;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.profile-svg {
-  width: 200px;
-  height: 200px;
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
 }
 
+.profile-image:hover {
+  transform: scale(1.05);
+}
 
+.image-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-secondary);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: bounce 2s infinite;
+}
+
+.scroll-arrow {
+  color: var(--text-secondary);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-arrow:hover {
+  opacity: 1;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
 
 /* Animations */
 @keyframes fadeInLeft {
@@ -208,17 +255,7 @@ onMounted(() => {
   }
 }
 
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  40% {
-    transform: translateX(-50%) translateY(-10px);
-  }
-  60% {
-    transform: translateX(-50%) translateY(-5px);
-  }
-}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -246,14 +283,9 @@ onMounted(() => {
     width: 100%;
   }
   
-  .image-placeholder {
+  .image-container {
     width: 250px;
     height: 250px;
-  }
-  
-  .profile-svg {
-    width: 150px;
-    height: 150px;
   }
 }
 
@@ -278,35 +310,6 @@ onMounted(() => {
   }
 }
 
-/* Scroll Indicator Styles */
-.scroll-indicator {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: bounce 2s infinite;
-}
 
-.scroll-arrow {
-  color: var(--text-secondary);
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
-}
-
-.scroll-arrow:hover {
-  opacity: 1;
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  40% {
-    transform: translateX(-50%) translateY(-10px);
-  }
-  60% {
-    transform: translateX(-50%) translateY(-5px);
-  }
-}
 
 </style>

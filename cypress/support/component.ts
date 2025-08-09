@@ -16,8 +16,8 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
-// Import global styles if needed
-// import '../../src/style.css'
+// Import global styles from App.vue
+import '../../src/App.vue'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
