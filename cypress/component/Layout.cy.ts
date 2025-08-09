@@ -11,6 +11,7 @@ describe('Layout Component', () => {
 
   it('should render Navbar component', () => {
     mount(Layout)
+    cy.viewport(1280, 720)
     
     // Check if Navbar is rendered
     cy.get('header').should('be.visible')

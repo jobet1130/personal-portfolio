@@ -13,6 +13,7 @@ describe('Navbar Component', () => {
 
   it('should render navbar with brand and navigation links', () => {
     mount(Navbar)
+    cy.viewport(1280, 720)
 
     // Check brand
     cy.get('.brand-text').should('contain.text', 'Portfolio')
