@@ -11,13 +11,6 @@ import Resume from '../components/Resume.vue'
 <style scoped>
 .resume-page {
   min-height: 100vh;
-  background: var(--bg-color, #ffffff);
-}
-
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .resume-page {
-    --bg-color: #111827;
-  }
+  padding: 2rem 0;
 }
 </style>

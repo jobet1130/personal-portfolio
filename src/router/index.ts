@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../pages/Home.vue'
-import Blog from '../pages/Blog.vue'
-import Resume from '../pages/Resume.vue'
+import AboutPage from '../pages/AboutPage.vue'
+import ProjectsPage from '../pages/ProjectsPage.vue'
+import BlogPage from '../pages/BlogPage.vue'
+import ResumePage from '../pages/ResumePage.vue'
 import NotFound from '../pages/NotFound.vue'
 
 const router = createRouter({
@@ -13,15 +15,30 @@ const router = createRouter({
       component: Home
     },
     {
-    path: '/blog',
-    name: 'Blog',
-    component: Blog
-  },
-  {
-    path: '/resume',
-    name: 'Resume',
-    component: Resume
-  },
+      path: '/about',
+      name: 'About',
+      component: AboutPage
+    },
+    {
+      path: '/projects',
+      name: 'Projects',
+      component: ProjectsPage
+    },
+    {
+      path: '/blog',
+      name: 'Blog',
+      component: BlogPage
+    },
+    {
+      path: '/resume-page',
+      name: 'ResumePage',
+      component: ResumePage
+    },
+    {
+      path: '/resume',
+      name: 'Resume',
+      component: ResumePage
+    },
     {
       path: '/404',
       name: '404',

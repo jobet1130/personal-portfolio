@@ -87,12 +87,12 @@ describe('Hero.vue', () => {
     expect(highlight.text()).toBe('Jobet P. Casquejo')
   })
 
-  it('contains scroll indicator for visual enhancement', () => {
-    const scrollIndicator = wrapper.find('.scroll-indicator')
-    const scrollArrow = wrapper.find('.scroll-arrow')
+  it('has proper image container structure', () => {
+    const imageContainer = wrapper.find('.image-container')
+    const profileImage = wrapper.find('.profile-image')
     
-    expect(scrollIndicator.exists()).toBe(true)
-    expect(scrollArrow.exists()).toBe(true)
+    expect(imageContainer.exists()).toBe(true)
+    expect(profileImage.exists()).toBe(true)
   })
 
   it('has proper semantic structure for accessibility', () => {

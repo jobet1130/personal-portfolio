@@ -2,14 +2,14 @@
   <header class="header">
     <nav class="nav" role="navigation" aria-label="Main navigation">
       <div class="nav-brand">
-        <div class="brand-text">Portfolio</div>
+        <router-link to="/" class="brand-text">Portfolio</router-link>
       </div>
       <ul class="nav-links" :class="{ 'nav-links-open': isMobileMenuOpen }">
-        <li><a href="#home" @click="scrollTo('home')">Home</a></li>
-        <li><a href="#about" @click="scrollTo('about')">About</a></li>
-        <li><a href="#skills" @click="scrollTo('skills')">Skills</a></li>
-        <li><a href="#projects" @click="scrollTo('projects')">Projects</a></li>
-        <li><a href="#contact" @click="scrollTo('contact')">Contact</a></li>
+        <li><router-link to="/" @click="closeMobileMenu">Home</router-link></li>
+        <li><router-link to="/about" @click="closeMobileMenu">About</router-link></li>
+        <li><router-link to="/projects" @click="closeMobileMenu">Projects</router-link></li>
+        <li><router-link to="/blog" @click="closeMobileMenu">Blog</router-link></li>
+        <li><router-link to="/resume" @click="closeMobileMenu">Resume</router-link></li>
       </ul>
       <button class="mobile-menu-toggle" @click="toggleMobileMenu" :class="{ 'active': isMobileMenuOpen }" aria-label="Toggle mobile menu" :aria-expanded="isMobileMenuOpen">
         <span></span>
@@ -29,11 +29,7 @@ const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
 }
 
-const scrollTo = (elementId: string) => {
-  const element = document.getElementById(elementId)
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth' })
-  }
+const closeMobileMenu = () => {
   isMobileMenuOpen.value = false
 }
 </script>
@@ -65,6 +61,12 @@ const scrollTo = (elementId: string) => {
   font-size: 1.5rem;
   font-weight: 700;
   color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-brand .brand-text:hover {
+  color: #007bff;
 }
 
 .nav-links {
@@ -82,10 +84,25 @@ const scrollTo = (elementId: string) => {
   font-weight: 500;
   transition: color 0.3s ease;
   cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  position: relative;
 }
 
 .nav-links a:hover {
   color: #007bff;
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+.nav-links a.router-link-active {
+  color: #007bff;
+  background-color: rgba(0, 123, 255, 0.15);
+  font-weight: 600;
+}
+
+.nav-links a.router-link-exact-active {
+  color: #007bff;
+  background-color: rgba(0, 123, 255, 0.2);
 }
 
 .mobile-menu-toggle {
@@ -159,6 +176,22 @@ const scrollTo = (elementId: string) => {
   .nav-brand .brand-text,
   .nav-links a {
     color: #fff;
+  }
+
+  .nav-brand .brand-text:hover,
+  .nav-links a:hover {
+    color: #60a5fa;
+    background-color: rgba(96, 165, 250, 0.1);
+  }
+
+  .nav-links a.router-link-active {
+    color: #60a5fa;
+    background-color: rgba(96, 165, 250, 0.15);
+  }
+
+  .nav-links a.router-link-exact-active {
+    color: #60a5fa;
+    background-color: rgba(96, 165, 250, 0.2);
   }
 
   .mobile-menu-toggle span {

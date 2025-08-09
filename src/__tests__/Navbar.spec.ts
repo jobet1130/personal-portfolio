@@ -1,18 +1,32 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { mount, VueWrapper } from '@vue/test-utils'
+import { describe, it, expect, beforeEach } from 'vitest'
+import { mount, RouterLinkStub } from '@vue/test-utils'
+import { createRouter, createWebHistory } from 'vue-router'
 import Navbar from '../components/Navbar.vue'
 
-// Mock scrollIntoView
-Object.defineProperty(window, 'scrollIntoView', {
-  value: vi.fn(),
-  writable: true
+// Create a mock router
+const mockRouter = createRouter({
+  history: createWebHistory(),
+  routes: [
+    { path: '/', name: 'Home', component: { template: '<div>Home</div>' } },
+    { path: '/about', name: 'About', component: { template: '<div>About</div>' } },
+    { path: '/projects', name: 'Projects', component: { template: '<div>Projects</div>' } },
+    { path: '/blog', name: 'Blog', component: { template: '<div>Blog</div>' } },
+    { path: '/resume', name: 'Resume', component: { template: '<div>Resume</div>' } },
+  ],
 })
 
 describe('Navbar.vue', () => {
-  let wrapper: VueWrapper
+  let wrapper: ReturnType<typeof mount>
 
   beforeEach(() => {
-    wrapper = mount(Navbar)
+    wrapper = mount(Navbar, {
+      global: {
+        plugins: [mockRouter],
+        stubs: {
+          RouterLink: RouterLinkStub,
+        },
+      },
+    })
   })
 
   it('renders properly', () => {
@@ -27,11 +41,14 @@ describe('Navbar.vue', () => {
   })
 
   it('renders navigation links', () => {
-    const navLinks = wrapper.findAll('.nav-links a')
-    expect(navLinks).toHaveLength(5)
+    const navLinks = wrapper.findAllComponents(RouterLinkStub)
+    expect(navLinks).toHaveLength(6) // 5 nav links + 1 brand link
     
-    const expectedLinks = ['Home', 'About', 'Skills', 'Projects', 'Contact']
-    navLinks.forEach((link, index) => {
+    const navOnlyLinks = wrapper.findAll('.nav-links li')
+    expect(navOnlyLinks).toHaveLength(5)
+    
+    const expectedLinks = ['Home', 'About', 'Projects', 'Blog', 'Resume']
+    navOnlyLinks.forEach((link, index) => {
       expect(link.text()).toBe(expectedLinks[index])
     })
   })
@@ -45,78 +62,74 @@ describe('Navbar.vue', () => {
   it('toggles mobile menu when button is clicked', async () => {
     const toggleButton = wrapper.find('.mobile-menu-toggle')
     const navLinks = wrapper.find('.nav-links')
-    
+
     // Initially mobile menu should be closed
     expect(navLinks.classes()).not.toContain('nav-links-open')
     expect(toggleButton.classes()).not.toContain('active')
-    
+
     // Click to open
     await toggleButton.trigger('click')
     expect(navLinks.classes()).toContain('nav-links-open')
     expect(toggleButton.classes()).toContain('active')
-    
+
     // Click to close
     await toggleButton.trigger('click')
     expect(navLinks.classes()).not.toContain('nav-links-open')
     expect(toggleButton.classes()).not.toContain('active')
   })
 
-  it('calls scrollTo function when navigation link is clicked', async () => {
-    // Mock getElementById
-    const mockElement = {
-      scrollIntoView: vi.fn()
-    }
-    vi.spyOn(document, 'getElementById').mockReturnValue(mockElement as unknown as HTMLElement)
+  it('has correct router-link destinations', () => {
+    const navLinks = wrapper.findAll('.nav-links li')
+    const expectedRoutes = ['/', '/about', '/projects', '/blog', '/resume']
     
-    const homeLink = wrapper.find('.nav-links a[href="#home"]')
-    await homeLink.trigger('click')
-    
-    expect(document.getElementById).toHaveBeenCalledWith('home')
-    expect(mockElement.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth' })
+    navLinks.forEach((link, index) => {
+      const routerLink = link.findComponent(RouterLinkStub)
+      expect(routerLink.props('to')).toBe(expectedRoutes[index])
+    })
   })
 
   it('closes mobile menu when navigation link is clicked', async () => {
     const toggleButton = wrapper.find('.mobile-menu-toggle')
     const navLinks = wrapper.find('.nav-links')
-    const homeLink = wrapper.find('.nav-links a[href="#home"]')
+    const homeLink = wrapper.findAll('.nav-links li').at(0)?.findComponent(RouterLinkStub)
     
     // Open mobile menu first
     await toggleButton.trigger('click')
     expect(navLinks.classes()).toContain('nav-links-open')
     
     // Click navigation link
-    await homeLink.trigger('click')
+    await homeLink?.trigger('click')
     expect(navLinks.classes()).not.toContain('nav-links-open')
   })
 
-  it('handles scrollTo when element does not exist', async () => {
-    vi.spyOn(document, 'getElementById').mockReturnValue(null)
+  it('navigates to correct route when router-link is clicked', async () => {
+    const aboutLink = wrapper.findAll('.nav-links li').at(1)?.findComponent(RouterLinkStub)
     
-    const homeLink = wrapper.find('.nav-links a[href="#home"]')
-    
-    // Should not throw error when element doesn't exist
-    expect(async () => {
-      await homeLink.trigger('click')
-    }).not.toThrow()
+    // Verify the router-link component is properly configured
+    expect(aboutLink?.exists()).toBe(true)
+    expect(aboutLink?.props('to')).toBe('/about')
   })
 
-  it('has correct href attributes', () => {
-    const links = wrapper.findAll('.nav-links a')
-    const expectedHrefs = ['#home', '#about', '#skills', '#projects', '#contact']
+  it('has router-link components with correct attributes', () => {
+    const navLinks = wrapper.findAll('.nav-links li')
     
-    links.forEach((link, index) => {
-      expect(link.attributes('href')).toBe(expectedHrefs[index])
+    expect(navLinks.length).toBe(5)
+    
+    // Verify that router-links have 'to' props
+    navLinks.forEach(link => {
+      const routerLink = link.findComponent(RouterLinkStub)
+      expect(routerLink.props('to')).toBeDefined()
     })
   })
 
   it('applies correct CSS classes for mobile menu states', async () => {
     const toggleButton = wrapper.find('.mobile-menu-toggle')
     const navLinks = wrapper.find('.nav-links')
-    
+
     // Test initial state
     expect(navLinks.classes()).toContain('nav-links')
     expect(navLinks.classes()).not.toContain('nav-links-open')
-    
+
     // Test open state
     await toggleButton.trigger('click')
     expect(navLinks.classes()).toContain('nav-links-open')

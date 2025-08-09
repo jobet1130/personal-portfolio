@@ -5,7 +5,7 @@ import Contact from '../components/Contact.vue'
 import ContactForm from '../components/ContactForm.vue'
 import Home from '../pages/Home.vue'
 import NotFound from '../pages/NotFound.vue'
-import Resume from '../pages/Resume.vue'
+import Resume from '../pages/ResumePage.vue'
 
 // Mock ContactForm component
 vi.mock('../components/ContactForm.vue', () => ({
