@@ -25,6 +25,28 @@ export default defineConfigWithVueTs(
     ...pluginVitest.configs.recommended,
     files: ['src/**/__tests__/*'],
   },
+  {
+    name: 'app/vue-component-naming',
+    files: ['**/*.vue'],
+    rules: {
+      'vue/multi-word-component-names': 'off'
+    }
+  },
+  {
+    name: 'app/cypress-config',
+    files: ['cypress.config.cjs'],
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off'
+    }
+  },
+  {
+    name: 'app/cypress-namespace',
+    files: ['cypress/**/*.ts'],
+    rules: {
+      '@typescript-eslint/no-namespace': 'off',
+      '@typescript-eslint/no-unused-expressions': 'off'
+    }
+  },
   ...pluginOxlint.configs['flat/recommended'],
   skipFormatting,
 )
