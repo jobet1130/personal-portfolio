@@ -5,6 +5,7 @@ import Contact from '../components/Contact.vue'
 import ContactForm from '../components/ContactForm.vue'
 import Home from '../pages/Home.vue'
 import NotFound from '../pages/NotFound.vue'
+import Resume from '../pages/Resume.vue'
 
 // Mock ContactForm component
 vi.mock('../components/ContactForm.vue', () => ({
@@ -19,6 +20,7 @@ const createTestRouter = () => {
     history: createWebHistory(),
     routes: [
       { path: '/', name: 'Home', component: Home },
+      { path: '/resume', name: 'Resume', component: Resume },
       { path: '/404', name: '404', component: NotFound },
       { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
     ],
@@ -74,13 +76,13 @@ describe('Contact.vue', () => {
     expect(resumeItem.classes()).toContain('clickable')
   })
 
-  it('navigates to 404 page when resume item is clicked', async () => {
+  it('navigates to resume page when resume item is clicked', async () => {
     const routerPushSpy = vi.spyOn(router, 'push')
 
     const resumeItem = wrapper.findAll('.contact-item')[2]
     await resumeItem.trigger('click')
 
-    expect(routerPushSpy).toHaveBeenCalledWith('/404')
+    expect(routerPushSpy).toHaveBeenCalledWith('/resume')
   })
 
   it('has proper accessibility attributes', () => {
