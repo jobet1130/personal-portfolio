@@ -2,6 +2,14 @@ import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import Projects from '../components/Projects.vue'
 
+// Mock vue-router
+const mockPush = vi.fn()
+vi.mock('vue-router', () => ({
+  useRouter: () => ({
+    push: mockPush
+  })
+}))
+
 // Mock the projects data
 vi.mock('../data/projects', () => ({
   projects: [
@@ -54,7 +62,18 @@ describe('Projects Component', () => {
   let wrapper: ReturnType<typeof mount>
 
   beforeEach(() => {
-    wrapper = mount(Projects)
+    wrapper = mount(Projects, {
+      global: {
+        mocks: {
+          $router: {
+            push: mockPush
+          },
+          $route: {
+            path: '/'
+          }
+        }
+      }
+    })
   })
 
   describe('Component Rendering', () => {
