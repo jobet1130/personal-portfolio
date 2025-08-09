@@ -8,10 +8,7 @@
     
     <Projects />
     
-    <div id="contact" class="section">
-      <h2>Contact</h2>
-      <p>Get in touch with me.</p>
-    </div>
+    <Contact />
   </div>
 </template>
 
@@ -20,6 +17,7 @@ import Hero from '../components/Hero.vue'
 import About from '../components/About.vue'
 import Skills from '../components/Skills.vue'
 import Projects from '../components/Projects.vue'
+import Contact from '../components/Contact.vue'
 </script>
 
 <style scoped>
