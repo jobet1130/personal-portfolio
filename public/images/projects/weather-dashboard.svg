@@ -1,0 +1,52 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="weatherBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#74b9ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0984e3;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#weatherBg)"/>
+  
+  <!-- Dashboard Container -->
+  <rect x="40" y="50" width="320" height="200" rx="12" fill="white" opacity="0.95"/>
+  
+  <!-- Sun Icon -->
+  <g transform="translate(120, 100)">
+    <circle cx="0" cy="0" r="20" fill="#f39c12"/>
+    <g stroke="#f39c12" stroke-width="3" stroke-linecap="round">
+      <line x1="0" y1="-35" x2="0" y2="-30"/>
+      <line x1="25" y1="-25" x2="21" y2="-21"/>
+      <line x1="35" y1="0" x2="30" y2="0"/>
+      <line x1="25" y1="25" x2="21" y2="21"/>
+      <line x1="0" y1="35" x2="0" y2="30"/>
+      <line x1="-25" y1="25" x2="-21" y2="21"/>
+      <line x1="-35" y1="0" x2="-30" y2="0"/>
+      <line x1="-25" y1="-25" x2="-21" y2="-21"/>
+    </g>
+  </g>
+  
+  <!-- Temperature -->
+  <text x="120" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2d3436">24°C</text>
+  
+  <!-- Weather Cards -->
+  <rect x="200" y="80" width="60" height="40" rx="6" fill="#dbeafe"/>
+  <rect x="270" y="80" width="60" height="40" rx="6" fill="#fef3c7"/>
+  <rect x="200" y="130" width="60" height="40" rx="6" fill="#f3e8ff"/>
+  <rect x="270" y="130" width="60" height="40" rx="6" fill="#ecfdf5"/>
+  
+  <!-- Chart Lines -->
+  <g stroke="#74b9ff" stroke-width="2" fill="none">
+    <path d="M60 190 L80 180 L100 185 L120 175 L140 170 L160 180 L180 175 L200 165"/>
+  </g>
+  
+  <!-- Chart Points -->
+  <circle cx="60" cy="190" r="3" fill="#74b9ff"/>
+  <circle cx="100" cy="185" r="3" fill="#74b9ff"/>
+  <circle cx="140" cy="170" r="3" fill="#74b9ff"/>
+  <circle cx="180" cy="175" r="3" fill="#74b9ff"/>
+  
+  <!-- Title -->
+  <text x="200" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">Weather Dashboard</text>
+</svg>

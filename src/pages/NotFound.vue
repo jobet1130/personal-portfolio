@@ -7,6 +7,49 @@
         <span class="four">4</span>
       </div>
       
+      <!-- Man scratching head animation -->
+      <div class="confused-man">
+        <svg width="120" height="120" viewBox="0 0 120 120" class="man-svg">
+          <!-- Head -->
+          <circle cx="60" cy="40" r="20" fill="#fdbcb4" stroke="#333" stroke-width="2"/>
+          
+          <!-- Hair -->
+          <path d="M42 25 Q60 15 78 25 Q75 20 60 18 Q45 20 42 25" fill="#8B4513"/>
+          
+          <!-- Eyes -->
+          <circle cx="53" cy="37" r="2" fill="#333"/>
+          <circle cx="67" cy="37" r="2" fill="#333"/>
+          
+          <!-- Mouth (confused/neutral) -->
+          <path d="M55 45 Q60 47 65 45" stroke="#333" stroke-width="2" fill="none"/>
+          
+          <!-- Body -->
+          <rect x="50" y="60" width="20" height="30" fill="#4A90E2" rx="5"/>
+          
+          <!-- Left arm -->
+          <rect x="35" y="65" width="15" height="8" fill="#fdbcb4" rx="4"/>
+          
+          <!-- Right arm (scratching head) -->
+          <g class="scratching-arm">
+            <rect x="70" y="65" width="15" height="8" fill="#fdbcb4" rx="4" transform-origin="70 69"/>
+            <rect x="82" y="55" width="8" height="15" fill="#fdbcb4" rx="4" transform-origin="86 62"/>
+            <!-- Hand -->
+            <circle cx="88" cy="50" r="4" fill="#fdbcb4" class="scratching-hand"/>
+          </g>
+          
+          <!-- Legs -->
+          <rect x="52" y="90" width="6" height="20" fill="#333" rx="3"/>
+          <rect x="62" y="90" width="6" height="20" fill="#333" rx="3"/>
+          
+          <!-- Confusion lines -->
+          <g class="confusion-lines">
+            <path d="M75 25 Q80 20 85 25" stroke="#666" stroke-width="1.5" fill="none"/>
+            <path d="M80 30 Q85 25 90 30" stroke="#666" stroke-width="1.5" fill="none"/>
+            <path d="M78 35 Q83 30 88 35" stroke="#666" stroke-width="1.5" fill="none"/>
+          </g>
+        </svg>
+      </div>
+      
       <h1 class="error-title">Page Not Found</h1>
       
       <p class="error-description">
@@ -198,7 +241,78 @@ const goBack = () => {
   text-decoration: underline;
 }
 
+/* Man scratching head styles */
+.confused-man {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.man-svg {
+  animation: float 3s ease-in-out infinite;
+}
+
+.scratching-arm {
+  animation: scratch 1.5s ease-in-out infinite;
+  transform-origin: 70px 69px;
+}
+
+.scratching-hand {
+  animation: handScratch 1.5s ease-in-out infinite;
+}
+
+.confusion-lines {
+  animation: confusionFloat 2s ease-in-out infinite;
+}
+
 /* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes scratch {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+}
+
+@keyframes handScratch {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  25% {
+    transform: translate(-3px, -2px) rotate(-10deg);
+  }
+  50% {
+    transform: translate(-1px, -1px) rotate(-5deg);
+  }
+  75% {
+    transform: translate(-2px, -1px) rotate(-8deg);
+  }
+}
+
+@keyframes confusionFloat {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+}
+
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
     transform: translateY(0);

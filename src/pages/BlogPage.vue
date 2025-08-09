@@ -112,7 +112,7 @@
 
       <!-- Blog Grid -->
       <div class="blog-grid" v-if="filteredPosts.length > 0">
-        <BlogPreview v-for="post in paginatedPosts" :key="post.id" :post="post" />
+        <BlogCard v-for="post in paginatedPosts" :key="post.id" :post="post" />
       </div>
 
       <!-- No Results -->
@@ -189,7 +189,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import BlogPreview from '../components/BlogPreview.vue'
+import BlogCard from '../components/BlogCard.vue'
 import { blogPosts, blogCategories, getPostsByCategory } from '../data/blog'
 import type { BlogPost } from '../data/blog'
 

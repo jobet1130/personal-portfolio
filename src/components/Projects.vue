@@ -2,7 +2,13 @@
   <section id="projects" class="projects">
     <div class="container">
       <div class="projects-header">
+        <h1 class="hero-title">PROJECTS</h1>
         <h2 class="section-title">My Projects</h2>
+        <p class="section-description">
+          Welcome to my portfolio showcase! I'm passionate about creating innovative solutions that solve real-world problems. 
+          From full-stack web applications to mobile experiences, I enjoy exploring new technologies and pushing the boundaries 
+          of what's possible in software development.
+        </p>
         <p class="section-subtitle">
           Here are some of the projects I've worked on. Each one represents a unique challenge and learning experience.
         </p>
@@ -108,8 +114,7 @@ onMounted(() => {
 
 <style scoped>
 .projects {
-  padding: 0.5rem 0;
-  min-height: 100vh;
+  padding: 40px 0;
 }
 
 .container {
@@ -120,7 +125,37 @@ onMounted(() => {
 
 .projects-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 4s ease-in-out infinite, fadeInScale 1.2s ease-out;
+  text-align: center;
+  text-shadow: 0 0 30px rgba(255, 107, 107, 0.3);
+  position: relative;
+}
+
+.hero-title::before {
+  content: 'PROJECTS';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s ease-in-out infinite;
 }
 
 .section-title {
@@ -132,6 +167,17 @@ onMounted(() => {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: slideInUp 1s ease-out 0.3s both;
+}
+
+.section-description {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  max-width: 700px;
+  margin: 0 auto 24px;
+  line-height: 1.7;
+  font-weight: 400;
+  animation: slideInUp 1s ease-out 0.6s both;
 }
 
 .section-subtitle {
@@ -140,13 +186,14 @@ onMounted(() => {
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
+  animation: slideInUp 1s ease-out 0.9s both;
 }
 
 .filter-buttons {
   display: flex;
   justify-content: center;
   gap: 12px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   flex-wrap: wrap;
 }
 
@@ -178,8 +225,11 @@ onMounted(() => {
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 30px;
-  margin-bottom: 60px;
+  gap: 24px;
+  margin-bottom: 30px;
+  align-items: stretch;
+  justify-items: center;
+  justify-content: center;
 }
 
 .load-more {
@@ -203,10 +253,55 @@ onMounted(() => {
   transform: translateY(-2px);
 }
 
+/* Animations */
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .projects {
-    padding: 60px 0;
+    padding: 30px 0;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
   }
   
   .section-title {
@@ -215,7 +310,7 @@ onMounted(() => {
   
   .projects-grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 24px;
   }
   
   .filter-buttons {
@@ -231,6 +326,11 @@ onMounted(() => {
 @media (max-width: 480px) {
   .container {
     padding: 0 16px;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+    letter-spacing: 0.05em;
   }
   
   .section-title {
