@@ -1,29 +1,10 @@
 <script setup lang="ts">
 import Layout from './components/Layout.vue'
-import Hero from './components/Hero.vue'
-import Skills from './components/Skills.vue'
 </script>
 
 <template>
   <Layout>
-    <Hero />
-    
-    <div id="about" class="section">
-      <h2>About Me</h2>
-      <p>I'm a passionate developer with experience in modern web technologies.</p>
-    </div>
-    
-    <Skills />
-    
-    <div id="projects" class="section">
-      <h2>Projects</h2>
-      <p>Showcase of my work and achievements.</p>
-    </div>
-    
-    <div id="contact" class="section">
-      <h2>Contact</h2>
-      <p>Get in touch with me.</p>
-    </div>
+    <router-view />
   </Layout>
 </template>
 
@@ -63,36 +44,18 @@ body {
 }
 </style>
 
-<style scoped>
-.section {
-  min-height: 100vh;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.section:nth-child(even) {
-  background-color: var(--bg-secondary);
-}
-
-h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+<style>
+/* Global base styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-color);
   color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: var(--text-color);
-}
-
-p {
-  font-size: 1.2rem;
-  color: var(--text-secondary);
-  max-width: 600px;
+* {
+  box-sizing: border-box;
 }
 </style>
