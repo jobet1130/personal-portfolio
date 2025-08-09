@@ -1,6 +1,14 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import ProjectCard from '../components/ProjectCard.vue'
+
+// Mock vue-router
+const mockPush = vi.fn()
+vi.mock('vue-router', () => ({
+  useRouter: () => ({
+    push: mockPush
+  })
+}))
 
 const mockProject = {
   id: 1,
@@ -93,10 +101,17 @@ describe('ProjectCard', () => {
     })
 
     const links = wrapper.findAll('.project-link')
-    expect(links).toHaveLength(2)
+    expect(links).toHaveLength(3) // View Details button + Live Demo + GitHub
+
+    // Check View Details button
+    const viewDetailsButton = links[0]
+    expect(viewDetailsButton.element.tagName).toBe('BUTTON')
+    expect(viewDetailsButton.classes()).toContain('view-details')
+    expect(viewDetailsButton.attributes('title')).toBe('View Project Details')
+    expect(viewDetailsButton.attributes('aria-label')).toBe('View Project Details')
 
     // Check live URL link
-    const liveLink = links[0]
+    const liveLink = links[1]
     expect(liveLink.attributes('href')).toBe(mockProject.liveUrl)
     expect(liveLink.attributes('target')).toBe('_blank')
     expect(liveLink.attributes('rel')).toBe('noopener noreferrer')
@@ -104,7 +119,7 @@ describe('ProjectCard', () => {
     expect(liveLink.attributes('aria-label')).toBe('View Live Demo')
 
     // Check GitHub link
-    const githubLink = links[1]
+    const githubLink = links[2]
     expect(githubLink.attributes('href')).toBe(mockProject.githubUrl)
     expect(githubLink.attributes('target')).toBe('_blank')
     expect(githubLink.attributes('rel')).toBe('noopener noreferrer')
@@ -112,17 +127,19 @@ describe('ProjectCard', () => {
     expect(githubLink.attributes('aria-label')).toBe('View Source Code')
   })
 
-  it('does not render links when URLs are not provided', () => {
+  it('renders only View Details button when URLs are not provided', () => {
     const wrapper = mount(ProjectCard, {
       props: {
         project: mockProjectMinimal
       }
     })
 
-    expect(wrapper.findAll('.project-link')).toHaveLength(0)
+    const links = wrapper.findAll('.project-link')
+    expect(links).toHaveLength(1) // Only View Details button
+    expect(links[0].classes()).toContain('view-details')
   })
 
-  it('renders only live URL link when GitHub URL is not provided', () => {
+  it('renders View Details button and live URL link when GitHub URL is not provided', () => {
     const projectWithOnlyLiveUrl = {
       ...mockProjectMinimal,
       liveUrl: 'https://example.com'
@@ -135,14 +152,15 @@ describe('ProjectCard', () => {
     })
 
     const links = wrapper.findAll('.project-link')
-    expect(links).toHaveLength(1)
-    expect(links[0].attributes('href')).toBe(projectWithOnlyLiveUrl.liveUrl)
+    expect(links).toHaveLength(2) // View Details button + Live Demo
+    expect(links[0].classes()).toContain('view-details')
+    expect(links[1].attributes('href')).toBe(projectWithOnlyLiveUrl.liveUrl)
   })
 
-  it('renders only GitHub link when live URL is not provided', () => {
+  it('renders View Details button and GitHub link when live URL is not provided', () => {
     const projectWithOnlyGithubUrl = {
       ...mockProjectMinimal,
-      githubUrl: 'https://github.com/example/repo'
+      githubUrl: 'https://github.com/user/repo'
     }
 
     const wrapper = mount(ProjectCard, {
@@ -152,8 +170,9 @@ describe('ProjectCard', () => {
     })
 
     const links = wrapper.findAll('.project-link')
-    expect(links).toHaveLength(1)
-    expect(links[0].attributes('href')).toBe(projectWithOnlyGithubUrl.githubUrl)
+    expect(links).toHaveLength(2) // View Details button + GitHub
+    expect(links[0].classes()).toContain('view-details')
+    expect(links[1].attributes('href')).toBe(projectWithOnlyGithubUrl.githubUrl)
   })
 
   it('handles empty technologies array', () => {
@@ -218,10 +237,23 @@ describe('ProjectCard', () => {
 
     // Check link SVGs
     const linkSvgs = wrapper.findAll('.project-link svg')
-    expect(linkSvgs).toHaveLength(2)
+    expect(linkSvgs).toHaveLength(3) // View Details + Live Demo + GitHub
     linkSvgs.forEach(svg => {
       expect(svg.attributes('width')).toBe('20')
       expect(svg.attributes('height')).toBe('20')
     })
+  })
+
+  it('navigates to project detail page when View Details button is clicked', async () => {
+    const wrapper = mount(ProjectCard, {
+      props: {
+        project: mockProject
+      }
+    })
+
+    const viewDetailsButton = wrapper.find('.view-details')
+    await viewDetailsButton.trigger('click')
+
+    expect(mockPush).toHaveBeenCalledWith(`/project/${mockProject.id}`)
   })
 })

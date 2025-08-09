@@ -2,6 +2,14 @@ import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import Projects from '../components/Projects.vue'
 
+// Mock vue-router
+const mockPush = vi.fn()
+vi.mock('vue-router', () => ({
+  useRouter: () => ({
+    push: mockPush
+  })
+}))
+
 // Mock the projects data
 vi.mock('../data/projects', () => ({
   projects: [
@@ -54,7 +62,18 @@ describe('Projects Component', () => {
   let wrapper: ReturnType<typeof mount>
 
   beforeEach(() => {
-    wrapper = mount(Projects)
+    wrapper = mount(Projects, {
+      global: {
+        mocks: {
+          $router: {
+            push: mockPush
+          },
+          $route: {
+            path: '/'
+          }
+        }
+      }
+    })
   })
 
   describe('Component Rendering', () => {
@@ -133,11 +152,16 @@ describe('Projects Component', () => {
 
       expect(projectLinks.length).toBeGreaterThan(0)
 
-      // Check if links have correct attributes
-      projectLinks.forEach((link) => {
+      // Check if anchor links have correct attributes (excluding View Details button)
+      const anchorLinks = projectLinks.filter(link => link.element.tagName === 'A')
+      anchorLinks.forEach((link) => {
         expect(link.attributes('target')).toBe('_blank')
         expect(link.attributes('rel')).toBe('noopener noreferrer')
       })
+
+      // Check if View Details button exists
+      const viewDetailsButton = projectLinks.find(link => link.classes().includes('view-details'))
+      expect(viewDetailsButton?.exists()).toBe(true)
     })
   })
 

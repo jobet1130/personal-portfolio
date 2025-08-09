@@ -4,6 +4,13 @@
       <img :src="project.imageUrl || '/images/projects/placeholder.svg'" :alt="project.title" loading="lazy" />
       <div class="project-overlay">
         <div class="project-links">
+          <button @click="navigateToProject" class="project-link view-details" title="View Project Details" aria-label="View Project Details">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            View Details
+          </button>
           <a v-if="project.liveUrl" :href="project.liveUrl" target="_blank" rel="noopener noreferrer" class="project-link" title="View Live Demo" aria-label="View Live Demo">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -39,6 +46,8 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
+
 interface Project {
   id: number
   title: string
@@ -50,7 +59,7 @@ interface Project {
   featured: boolean
 }
 
-defineProps<{
+const props = defineProps<{
   project: Project
 }>()
 
@@ -58,6 +67,12 @@ defineEmits<{
   mouseenter: []
   mouseleave: []
 }>()
+
+const router = useRouter()
+
+const navigateToProject = () => {
+  router.push(`/project/${props.project.id}`)
+}
 </script>
 
 <style scoped>
@@ -147,6 +162,18 @@ defineEmits<{
 
 .project-link:hover {
   background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.project-link.view-details {
+  background: #3b82f6;
+  border: 1px solid #3b82f6;
+  font-weight: 600;
+}
+
+.project-link.view-details:hover {
+  background: #2563eb;
+  border: 1px solid #2563eb;
   transform: translateY(-2px);
 }
 

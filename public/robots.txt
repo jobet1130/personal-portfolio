@@ -5,7 +5,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location (update with your actual domain)
-# Sitemap: https://yourdomain.com/sitemap.xml
+# Sitemap: https://personal-portfolio-seven-delta-55.vercel.app/sitemap.xml
 
 # Optional: Crawl-delay (in seconds) to be respectful to servers
 # Crawl-delay: 1

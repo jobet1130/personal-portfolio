@@ -40,6 +40,11 @@ const router = createRouter({
       component: ResumePage
     },
     {
+      path: '/project/:id',
+      name: 'ProjectDetail',
+      component: () => import('../pages/ProjectDetail.vue')
+    },
+    {
       path: '/404',
       name: '404',
       component: NotFound
