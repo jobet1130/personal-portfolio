@@ -127,8 +127,21 @@ export const getServiceById = (id: string): Service | undefined => {
 }
 
 export const getServicesByCategory = (category: string): Service[] => {
-  // This could be extended to filter by categories if needed
-  return services
+  // Filter services by category (could be based on service type or tags)
+  const categoryMap: { [key: string]: string[] } = {
+    'development': ['web-development', 'mobile-development', 'ecommerce'],
+    'design': ['ui-ux-design'],
+    'support': ['consulting', 'maintenance'],
+    'technical': ['web-development', 'mobile-development', 'consulting'],
+    'business': ['ecommerce', 'consulting', 'maintenance']
+  }
+  
+  const serviceIds = categoryMap[category.toLowerCase()]
+  if (!serviceIds) {
+    return services // Return all services if category not found
+  }
+  
+  return services.filter(service => serviceIds.includes(service.id))
 }
 
 export default services

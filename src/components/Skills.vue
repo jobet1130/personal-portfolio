@@ -115,8 +115,7 @@ onMounted(() => {
 
 <style scoped>
 .skills {
-  padding: 5rem 0;
-  background: linear-gradient(135deg, var(--bg-color) 0%, var(--bg-secondary) 100%);
+  padding: 0.5rem 0;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -180,9 +179,8 @@ onMounted(() => {
 }
 
 .category-btn.active {
-  background: var(--primary-color);
   border-color: var(--primary-color);
-  color: white;
+  color: var(--primary-color);
   transform: translateY(-2px);
 }
 
@@ -194,7 +192,6 @@ onMounted(() => {
 }
 
 .skill-card {
-  background: var(--bg-color);
   border-radius: 16px;
   padding: 2rem;
   border: 1px solid var(--text-secondary);
@@ -294,7 +291,7 @@ onMounted(() => {
 .level-bar {
   flex: 1;
   height: 6px;
-  background: var(--text-secondary);
+  border: 1px solid var(--text-secondary);
   border-radius: 3px;
   overflow: hidden;
 }
@@ -307,7 +304,6 @@ onMounted(() => {
 }
 
 .skills-summary {
-  background: var(--bg-color);
   border-radius: 16px;
   padding: 2rem;
   border: 1px solid var(--text-secondary);
@@ -397,7 +393,7 @@ onMounted(() => {
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
   .skills {
-    background: linear-gradient(135deg, var(--bg-color) 0%, var(--bg-secondary) 100%);
+    /* Background removed for transparent appearance */
   }
 }
 

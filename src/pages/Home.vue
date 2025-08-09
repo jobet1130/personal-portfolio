@@ -2,17 +2,11 @@
   <div>
     <Hero />
     
-    <div id="about" class="section">
-      <h2>About Me</h2>
-      <p>I'm a passionate developer with experience in modern web technologies.</p>
-    </div>
+    <About />
     
     <Skills />
     
-    <div id="projects" class="section">
-      <h2>Projects</h2>
-      <p>Showcase of my work and achievements.</p>
-    </div>
+    <Projects />
     
     <div id="contact" class="section">
       <h2>Contact</h2>
@@ -23,7 +17,9 @@
 
 <script setup lang="ts">
 import Hero from '../components/Hero.vue'
+import About from '../components/About.vue'
 import Skills from '../components/Skills.vue'
+import Projects from '../components/Projects.vue'
 </script>
 
 <style scoped>
@@ -49,9 +45,11 @@ import Skills from '../components/Skills.vue'
   margin: 0 auto;
 }
 
+
+
 @media (max-width: 768px) {
   .section {
-    padding: 3rem 1rem;
+    padding: 4rem 1rem;
   }
   
   .section h2 {

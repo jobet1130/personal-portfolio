@@ -10,7 +10,7 @@
         </h2>
         <p class="hero-description">
           I build powerful CRM solutions and automate business processes using Salesforce platform. 
-          With expertise in Apex, Lightning Web Components, and scalable architecture, I transform 
+          With 2 years of experience in Apex, Lightning Web Components, and scalable architecture, I transform 
           business requirements into efficient solutions that drive growth and productivity.
         </p>
         <div class="hero-actions">
@@ -32,9 +32,16 @@
         </div>
       </div>
     </div>
+
+    <!-- Scroll Indicator -->
     <div class="scroll-indicator">
-      <div class="scroll-arrow"></div>
+      <div class="scroll-arrow">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
     </div>
+
   </section>
 </template>
 
@@ -48,12 +55,12 @@ onMounted(() => {
 
 <style scoped>
 .hero {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 0 1rem 2rem 1rem;
+  padding: 2rem 1rem 0.5rem 1rem;
   text-align: center;
 }
 
@@ -64,12 +71,13 @@ onMounted(() => {
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
+  justify-content: center;
   margin: 0 auto;
 }
 
 .hero-content {
   animation: fadeInLeft 1s ease-out;
-  text-align: left;
+  text-align: center;
 }
 
 .hero-title {
@@ -115,7 +123,7 @@ onMounted(() => {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .btn {
@@ -163,11 +171,9 @@ onMounted(() => {
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
 }
@@ -177,21 +183,7 @@ onMounted(() => {
   height: 200px;
 }
 
-.scroll-indicator {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: bounce 2s infinite;
-}
 
-.scroll-arrow {
-  width: 24px;
-  height: 24px;
-  border-right: 2px solid var(--primary-color);
-  border-bottom: 2px solid var(--primary-color);
-  transform: rotate(45deg);
-}
 
 /* Animations */
 @keyframes fadeInLeft {
@@ -286,10 +278,35 @@ onMounted(() => {
   }
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .hero {
-    background: linear-gradient(135deg, var(--bg-color) 0%, var(--bg-secondary) 100%);
+/* Scroll Indicator Styles */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+}
+
+.scroll-arrow {
+  color: var(--text-secondary);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-arrow:hover {
+  opacity: 1;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
   }
 }
+
 </style>
