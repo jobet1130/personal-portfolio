@@ -1,7 +1,7 @@
 <template>
-  <div class="project-card">
+  <div class="project-card" @mouseenter="$emit('mouseenter')" @mouseleave="$emit('mouseleave')">
     <div class="project-image">
-      <img :src="project.imageUrl || '/images/projects/placeholder.jpg'" :alt="project.title" />
+      <img :src="project.imageUrl || '/images/projects/placeholder.jpg'" :alt="project.title" loading="lazy" />
       <div class="project-overlay">
         <div class="project-links">
           <a v-if="project.liveUrl" :href="project.liveUrl" target="_blank" rel="noopener noreferrer" class="project-link" title="View Live Demo" aria-label="View Live Demo">
@@ -52,6 +52,11 @@ interface Project {
 
 defineProps<{
   project: Project
+}>()
+
+defineEmits<{
+  mouseenter: []
+  mouseleave: []
 }>()
 </script>
 

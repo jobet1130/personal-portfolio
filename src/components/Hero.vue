@@ -25,12 +25,20 @@
       <div class="hero-image">
         <div class="image-container">
           <img src="/images/profile.jpg" alt="Jobet P. Casquejo - Salesforce Developer" class="profile-image" />
+          <div class="image-placeholder"></div>
         </div>
       </div>
     </div>
 
-
-
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <div class="scroll-arrow">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M7 13l3 3 7-7"></path>
+          <path d="M7 6l3 3 7-7"></path>
+        </svg>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -180,7 +188,49 @@ onMounted(() => {
   transform: scale(1.05);
 }
 
+.image-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-secondary);
+  border-radius: 50%;
+  z-index: -1;
+}
 
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: bounce 2s infinite;
+}
+
+.scroll-arrow {
+  color: var(--text-secondary);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-arrow:hover {
+  opacity: 1;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
 
 /* Animations */
 @keyframes fadeInLeft {

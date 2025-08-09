@@ -42,6 +42,8 @@
           v-for="project in filteredProjects" 
           :key="project.id"
           :project="project"
+          @mouseenter="hoveredCard = project.id"
+          @mouseleave="hoveredCard = null"
         />
       </div>
 
@@ -63,6 +65,7 @@ import ProjectCard from './ProjectCard.vue'
 // Reactive data
 const activeFilter = ref<string>('all')
 const hasMoreProjects = ref(false) // For future pagination
+const hoveredCard = ref<number | null>(null)
 
 // Computed properties
 const filteredProjects = computed(() => {

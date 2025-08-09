@@ -125,8 +125,8 @@ import ContactForm from './ContactForm.vue'
 const router = useRouter()
 
 const handleResumeClick = () => {
-  // Navigate to 404 page since resume is not yet available
-  router.push('/404')
+  // Navigate to resume page
+  router.push('/resume')
 }
 
 const handleLocationClick = () => {
