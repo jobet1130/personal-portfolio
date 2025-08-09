@@ -133,11 +133,16 @@ describe('Projects Component', () => {
 
       expect(projectLinks.length).toBeGreaterThan(0)
 
-      // Check if links have correct attributes
-      projectLinks.forEach((link) => {
+      // Check if anchor links have correct attributes (excluding View Details button)
+      const anchorLinks = projectLinks.filter(link => link.element.tagName === 'A')
+      anchorLinks.forEach((link) => {
         expect(link.attributes('target')).toBe('_blank')
         expect(link.attributes('rel')).toBe('noopener noreferrer')
       })
+
+      // Check if View Details button exists
+      const viewDetailsButton = projectLinks.find(link => link.classes().includes('view-details'))
+      expect(viewDetailsButton?.exists()).toBe(true)
     })
   })
 
