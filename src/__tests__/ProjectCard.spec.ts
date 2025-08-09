@@ -71,7 +71,7 @@ describe('ProjectCard', () => {
     })
 
     const img = wrapper.find('.project-image img')
-    expect(img.attributes('src')).toBe('/images/projects/placeholder.jpg')
+    expect(img.attributes('src')).toBe('/images/projects/placeholder.svg')
     expect(img.attributes('alt')).toBe(mockProjectWithoutImage.title)
   })
 
