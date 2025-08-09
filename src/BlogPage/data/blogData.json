@@ -1,0 +1,88 @@
+{
+  "posts": [
+    {
+      "id": "vue3-composition-api-guide",
+      "title": "Mastering Vue 3 Composition API: A Complete Guide",
+      "slug": "vue3-composition-api-guide",
+      "excerpt": "Learn how to leverage the power of Vue 3 Composition API to write more maintainable and reusable code.",
+      "content": "# Mastering Vue 3 Composition API: A Complete Guide\n\nThe Vue 3 Composition API represents a paradigm shift in how we write Vue applications. In this comprehensive guide, we'll explore everything you need to know to master this powerful feature.\n\n## What is the Composition API?\n\nThe Composition API is a new way to write Vue components that provides better logic reuse, more flexible code organization, and improved TypeScript support.\n\n## Key Benefits\n\n1. **Better Logic Reuse**: Extract and reuse stateful logic between components\n2. **Improved TypeScript Support**: Better type inference and IDE support\n3. **More Flexible Code Organization**: Group related code together\n\n## Getting Started\n\n```javascript\nimport { ref, computed, onMounted } from 'vue'\n\nexport default {\n  setup() {\n    const count = ref(0)\n    const doubleCount = computed(() => count.value * 2)\n    \n    const increment = () => {\n      count.value++\n    }\n    \n    onMounted(() => {\n      console.log('Component mounted!')\n    })\n    \n    return {\n      count,\n      doubleCount,\n      increment\n    }\n  }\n}\n```\n\n## Advanced Patterns\n\n### Composables\n\nComposables are reusable functions that encapsulate stateful logic:\n\n```javascript\n// useCounter.js\nimport { ref, computed } from 'vue'\n\nexport function useCounter(initialValue = 0) {\n  const count = ref(initialValue)\n  const doubleCount = computed(() => count.value * 2)\n  \n  const increment = () => count.value++\n  const decrement = () => count.value--\n  const reset = () => count.value = initialValue\n  \n  return {\n    count,\n    doubleCount,\n    increment,\n    decrement,\n    reset\n  }\n}\n```\n\n### Reactive References\n\nUnderstanding the difference between `ref` and `reactive`:\n\n```javascript\nimport { ref, reactive } from 'vue'\n\n// ref for primitives\nconst count = ref(0)\nconst message = ref('Hello')\n\n// reactive for objects\nconst state = reactive({\n  user: {\n    name: 'John',\n    email: 'john@example.com'\n  },\n  settings: {\n    theme: 'dark',\n    notifications: true\n  }\n})\n```\n\n## Best Practices\n\n1. **Use composables for reusable logic**\n2. **Keep setup functions clean and organized**\n3. **Leverage TypeScript for better development experience**\n4. **Use computed properties for derived state**\n5. **Handle side effects properly with watchers**\n\n## Conclusion\n\nThe Vue 3 Composition API is a powerful tool that enables more maintainable and scalable Vue applications. By following these patterns and best practices, you'll be able to build robust applications with confidence.",
+      "author": "Jobet P. Casquejo",
+      "publishedDate": "2024-01-15",
+      "updatedDate": "2024-01-20",
+      "tags": ["Vue.js", "Composition API", "JavaScript", "Frontend"],
+      "category": "vue",
+      "featuredImage": "/images/blog/vue3-composition-api.svg",
+      "readTime": 8,
+      "isPublished": true,
+      "isFeatured": true,
+      "views": 1250,
+      "likes": 89,
+      "seoTitle": "Vue 3 Composition API Guide - Master Modern Vue Development",
+      "seoDescription": "Complete guide to Vue 3 Composition API with examples, best practices, and real-world use cases."
+    },
+    {
+      "id": "javascript-async-patterns",
+      "title": "Modern JavaScript Async Patterns: Promises, Async/Await, and Beyond",
+      "slug": "javascript-async-patterns",
+      "excerpt": "Explore modern asynchronous programming patterns in JavaScript and learn when to use each approach.",
+      "content": "# Modern JavaScript Async Patterns\n\nAsynchronous programming is at the heart of modern JavaScript development. Let's explore the evolution and best practices of async patterns.\n\n## The Evolution of Async JavaScript\n\n1. **Callbacks** - The original async pattern\n2. **Promises** - A more elegant solution\n3. **Async/Await** - Synchronous-looking async code\n4. **Modern Patterns** - Advanced techniques\n\n## Callbacks: The Foundation\n\nCallbacks were the first solution to asynchronous programming in JavaScript:\n\n```javascript\nfunction fetchData(callback) {\n  setTimeout(() => {\n    const data = { id: 1, name: 'John' }\n    callback(null, data)\n  }, 1000)\n}\n\nfetchData((error, data) => {\n  if (error) {\n    console.error('Error:', error)\n  } else {\n    console.log('Data:', data)\n  }\n})\n```\n\n### Callback Hell\n\nThe main problem with callbacks is nesting:\n\n```javascript\nfetchUser(userId, (userError, user) => {\n  if (userError) return handleError(userError)\n  \n  fetchPosts(user.id, (postsError, posts) => {\n    if (postsError) return handleError(postsError)\n    \n    fetchComments(posts[0].id, (commentsError, comments) => {\n      if (commentsError) return handleError(commentsError)\n      \n      // Finally do something with the data\n      displayData(user, posts, comments)\n    })\n  })\n})\n```\n\n## Promises: A Better Way\n\nPromises provide a cleaner approach:\n\n```javascript\nfunction fetchData() {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      const data = { id: 1, name: 'John' }\n      resolve(data)\n    }, 1000)\n  })\n}\n\nfetchData()\n  .then(data => console.log('Data:', data))\n  .catch(error => console.error('Error:', error))\n```\n\n### Promise Chaining\n\n```javascript\nfetchUser(userId)\n  .then(user => fetchPosts(user.id))\n  .then(posts => fetchComments(posts[0].id))\n  .then(comments => displayData(comments))\n  .catch(error => handleError(error))\n```\n\n## Async/Await: Synchronous-Looking Code\n\nAsync/await makes asynchronous code look synchronous:\n\n```javascript\nasync function loadUserData(userId) {\n  try {\n    const user = await fetchUser(userId)\n    const posts = await fetchPosts(user.id)\n    const comments = await fetchComments(posts[0].id)\n    \n    displayData(user, posts, comments)\n  } catch (error) {\n    handleError(error)\n  }\n}\n```\n\n## Advanced Patterns\n\n### Parallel Execution\n\n```javascript\n// Sequential (slow)\nconst user = await fetchUser(userId)\nconst settings = await fetchSettings(userId)\nconst preferences = await fetchPreferences(userId)\n\n// Parallel (fast)\nconst [user, settings, preferences] = await Promise.all([\n  fetchUser(userId),\n  fetchSettings(userId),\n  fetchPreferences(userId)\n])\n```\n\n### Error Handling Strategies\n\n```javascript\n// Graceful degradation\nasync function loadDashboard(userId) {\n  const user = await fetchUser(userId) // Critical\n  \n  const [posts, analytics] = await Promise.allSettled([\n    fetchPosts(userId),\n    fetchAnalytics(userId)\n  ])\n  \n  return {\n    user,\n    posts: posts.status === 'fulfilled' ? posts.value : [],\n    analytics: analytics.status === 'fulfilled' ? analytics.value : null\n  }\n}\n```\n\n## Best Practices\n\n1. **Use async/await for readability**\n2. **Handle errors appropriately**\n3. **Avoid mixing patterns**\n4. **Use Promise.all for parallel operations**\n5. **Consider Promise.allSettled for graceful degradation**\n\n## Conclusion\n\nModern JavaScript provides powerful tools for handling asynchronous operations. Choose the right pattern for your use case and always handle errors gracefully.",
+      "author": "Jobet P. Casquejo",
+      "publishedDate": "2024-01-10",
+      "tags": ["JavaScript", "Async", "Promises", "ES6+"],
+      "category": "javascript",
+      "featuredImage": "/images/blog/js-async-patterns.svg",
+      "readTime": 12,
+      "isPublished": true,
+      "isFeatured": true,
+      "views": 2100,
+      "likes": 156
+    },
+    {
+      "id": "developer-productivity-tips",
+      "title": "10 Productivity Tips Every Developer Should Know",
+      "slug": "developer-productivity-tips",
+      "excerpt": "Boost your development productivity with these proven tips and techniques used by senior developers.",
+      "content": "# 10 Productivity Tips Every Developer Should Know\n\nProductivity is crucial for developers. Here are 10 proven tips to help you code more efficiently and effectively.\n\n## 1. Master Your IDE\n\nYour IDE is your primary tool. Invest time in learning keyboard shortcuts and customizing your environment:\n\n### Essential Shortcuts\n- **Ctrl+Shift+P** (VS Code): Command palette\n- **Ctrl+P**: Quick file open\n- **Ctrl+Shift+F**: Global search\n- **Alt+Up/Down**: Move lines\n- **Ctrl+D**: Select next occurrence\n\n### Useful Extensions\n- **Prettier**: Code formatting\n- **ESLint**: Code linting\n- **GitLens**: Enhanced Git integration\n- **Bracket Pair Colorizer**: Visual bracket matching\n\n## 2. Use Code Snippets\n\nCreate reusable code snippets for common patterns:\n\n```json\n{\n  \"Vue Component\": {\n    \"prefix\": \"vcomp\",\n    \"body\": [\n      \"<template>\",\n      \"  <div class=\\\"$1\\\">\",\n      \"    $2\",\n      \"  </div>\",\n      \"</template>\",\n      \"\",\n      \"<script setup lang=\\\"ts\\\">\",\n      \"$3\",\n      \"</script>\",\n      \"\",\n      \"<style scoped>\",\n      \"$4\",\n      \"</style>\"\n    ]\n  }\n}\n```\n\n## 3. Automate Repetitive Tasks\n\nUse scripts and tools to automate boring tasks:\n\n```bash\n# Package.json scripts\n{\n  \"scripts\": {\n    \"dev\": \"vite\",\n    \"build\": \"vite build\",\n    \"test\": \"vitest\",\n    \"lint\": \"eslint . --fix\",\n    \"format\": \"prettier --write .\",\n    \"deploy\": \"npm run build && npm run deploy:prod\"\n  }\n}\n```\n\n## 4. Practice Test-Driven Development\n\nWrite tests first to clarify requirements and catch bugs early:\n\n```javascript\n// Test first\ndescribe('Calculator', () => {\n  it('should add two numbers correctly', () => {\n    expect(add(2, 3)).toBe(5)\n  })\n})\n\n// Then implement\nfunction add(a, b) {\n  return a + b\n}\n```\n\n## 5. Use Version Control Effectively\n\nMaster Git workflows and commit best practices:\n\n```bash\n# Atomic commits\ngit add specific-file.js\ngit commit -m \"feat: add user authentication\"\n\n# Feature branches\ngit checkout -b feature/user-profile\ngit push -u origin feature/user-profile\n\n# Interactive rebase\ngit rebase -i HEAD~3\n```\n\n## 6. Learn Command Line Basics\n\nCommand line proficiency saves significant time:\n\n```bash\n# Navigation\ncd ~/projects/my-app\nls -la\npwd\n\n# File operations\ncp file.txt backup.txt\nmv old-name.txt new-name.txt\nfind . -name \"*.js\" -type f\n\n# Process management\nps aux | grep node\nkill -9 1234\n```\n\n## 7. Use Documentation Tools\n\nDocument your code effectively:\n\n```javascript\n/**\n * Calculates the total price including tax\n * @param {number} price - The base price\n * @param {number} taxRate - Tax rate as decimal (e.g., 0.08 for 8%)\n * @returns {number} Total price including tax\n * @example\n * calculateTotal(100, 0.08) // returns 108\n */\nfunction calculateTotal(price, taxRate) {\n  return price * (1 + taxRate)\n}\n```\n\n## 8. Optimize Your Workspace\n\n### Physical Setup\n- **Dual monitors**: Increase screen real estate\n- **Ergonomic chair**: Prevent back pain\n- **Good lighting**: Reduce eye strain\n- **Mechanical keyboard**: Improve typing experience\n\n### Digital Setup\n- **Organized file structure**: Consistent project organization\n- **Bookmark management**: Quick access to resources\n- **Note-taking system**: Capture and organize knowledge\n\n## 9. Learn Debugging Techniques\n\nEffective debugging saves hours:\n\n```javascript\n// Console debugging\nconsole.log('Debug point 1:', variable)\nconsole.table(arrayOfObjects)\nconsole.time('performance-test')\n// ... code to test\nconsole.timeEnd('performance-test')\n\n// Debugger statements\nfunction complexFunction(data) {\n  debugger // Execution will pause here\n  return processData(data)\n}\n```\n\n## 10. Continuous Learning\n\n### Stay Updated\n- **Follow tech blogs**: Dev.to, Medium, CSS-Tricks\n- **Subscribe to newsletters**: JavaScript Weekly, Vue.js News\n- **Join communities**: Discord servers, Reddit, Stack Overflow\n- **Attend conferences**: Local meetups, online conferences\n\n### Practice Regularly\n- **Code challenges**: LeetCode, HackerRank, Codewars\n- **Side projects**: Build things you're passionate about\n- **Open source**: Contribute to projects you use\n\n## Bonus Tips\n\n### Time Management\n- **Pomodoro Technique**: 25-minute focused work sessions\n- **Time blocking**: Schedule specific tasks\n- **Eliminate distractions**: Turn off notifications during deep work\n\n### Health and Wellness\n- **Take regular breaks**: Prevent burnout and maintain focus\n- **Exercise regularly**: Improve cognitive function\n- **Get enough sleep**: Essential for problem-solving abilities\n\n## Conclusion\n\nProductivity isn't just about working faster—it's about working smarter. Implement these tips gradually and find what works best for your workflow. Remember, the goal is sustainable productivity that enhances both your code quality and work-life balance.",
+      "author": "Jobet P. Casquejo",
+      "publishedDate": "2024-01-05",
+      "tags": ["Productivity", "Development", "Tips", "Workflow"],
+      "category": "career",
+      "featuredImage": "/images/blog/productivity-tips.svg",
+      "readTime": 6,
+      "isPublished": true,
+      "isFeatured": false,
+      "views": 890,
+      "likes": 67
+    }
+  ],
+  "categories": [
+    {
+      "id": "web-development",
+      "name": "Web Development",
+      "description": "Articles about modern web development techniques and frameworks",
+      "color": "#3b82f6",
+      "icon": "code"
+    },
+    {
+      "id": "javascript",
+      "name": "JavaScript",
+      "description": "Deep dives into JavaScript concepts and best practices",
+      "color": "#f59e0b",
+      "icon": "javascript"
+    },
+    {
+      "id": "vue",
+      "name": "Vue.js",
+      "description": "Vue.js tutorials, tips, and advanced techniques",
+      "color": "#10b981",
+      "icon": "vue"
+    },
+    {
+      "id": "career",
+      "name": "Career",
+      "description": "Professional development and career advice for developers",
+      "color": "#8b5cf6",
+      "icon": "briefcase"
+    }
+  ]
+}
