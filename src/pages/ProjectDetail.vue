@@ -174,8 +174,8 @@ const goBack = () => {
 
 <style scoped>
 .project-detail {
-  min-height: calc(100vh - 160px); /* Account for navbar and footer */
-  padding: 2rem 0;
+  min-height: 100vh; /* Full viewport height for standalone page */
+  padding: 0;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
 }
@@ -183,7 +183,7 @@ const goBack = () => {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 3rem 1rem 2rem 1rem; /* Increased top padding for standalone page */
 }
 
 .project-header {
