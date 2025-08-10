@@ -13,33 +13,95 @@
             <p class="summary">{{ personalInfo.summary }}</p>
           </div>
         </div>
-        
+
         <div class="contact-info">
           <div class="contact-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path
+                d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
+              <polyline
+                points="22,6 12,13 2,6"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
             <span>{{ personalInfo.email }}</span>
           </div>
           <div class="contact-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
             </svg>
             <span>{{ personalInfo.phone }}</span>
           </div>
           <div class="contact-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path
+                d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
+              <circle
+                cx="12"
+                cy="10"
+                r="3"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
             </svg>
             <span>{{ personalInfo.location }}</span>
           </div>
           <div class="contact-item">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path
+                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
+              <rect
+                x="2"
+                y="9"
+                width="4"
+                height="12"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
+              <circle
+                cx="4"
+                cy="4"
+                r="2"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
             </svg>
             <a :href="personalInfo.linkedin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </div>
@@ -52,9 +114,19 @@
         <section class="resume-section">
           <h3 class="section-title">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="2" fill="none"/>
-              <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/>
-              <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/>
+              <rect
+                x="2"
+                y="3"
+                width="20"
+                height="14"
+                rx="2"
+                ry="2"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              />
+              <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2" />
+              <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2" />
             </svg>
             Professional Experience
           </h3>
@@ -64,7 +136,9 @@
               <div class="timeline-content">
                 <div class="job-header">
                   <h4 class="job-title">{{ job.position }}</h4>
-                  <span class="job-period">{{ job.startDate }} - {{ job.endDate || 'Present' }}</span>
+                  <span class="job-period"
+                    >{{ job.startDate }} - {{ job.endDate || 'Present' }}</span
+                  >
                 </div>
                 <div class="job-company">
                   <strong>{{ job.company }}</strong>
@@ -90,8 +164,22 @@
         <section class="resume-section">
           <h3 class="section-title">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <path d="M6 12v5c3 3 9 3 12 0v-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path
+                d="M22 10v6M2 10l10-5 10 5-10 5z"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
+              <path
+                d="M6 12v5c3 3 9 3 12 0v-5"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
             </svg>
             Education
           </h3>
@@ -121,14 +209,39 @@
         <section class="resume-section">
           <h3 class="section-title">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <polygon points="12,2 2,7 12,12 22,7 12,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <polyline points="2,17 12,22 22,17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <polyline points="2,12 12,17 22,12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <polygon
+                points="12,2 2,7 12,12 22,7 12,2"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
+              <polyline
+                points="2,17 12,22 22,17"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
+              <polyline
+                points="2,12 12,17 22,12"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                fill="none"
+              />
             </svg>
             Technical Skills
           </h3>
           <div class="skills-grid">
-            <div v-for="skillCategory in skills" :key="skillCategory.category" class="skill-category">
+            <div
+              v-for="skillCategory in skills"
+              :key="skillCategory.category"
+              class="skill-category"
+            >
               <h4 class="skill-category-title">{{ skillCategory.category }}</h4>
               <div class="skill-items">
                 <div v-for="skill in skillCategory.items" :key="skill.name" class="skill-item">
@@ -144,25 +257,70 @@
             </div>
           </div>
         </section>
-
-
       </div>
 
       <!-- Download Button -->
       <div class="resume-actions">
         <button class="download-btn" @click="downloadResume">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <polyline points="7,10 12,15 17,10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path
+              d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+            />
+            <polyline
+              points="7,10 12,15 17,10"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+            />
+            <line
+              x1="12"
+              y1="15"
+              x2="12"
+              y2="3"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </svg>
           Download PDF Resume
         </button>
         <button class="print-btn" @click="printResume">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <polyline points="6,9 6,2 18,2 18,9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <rect x="6" y="14" width="12" height="8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <polyline
+              points="6,9 6,2 18,2 18,9"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+            />
+            <path
+              d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+            />
+            <rect
+              x="6"
+              y="14"
+              width="12"
+              height="8"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+            />
           </svg>
           Print Resume
         </button>
@@ -177,63 +335,115 @@ import { ref } from 'vue'
 // Personal Information
 const personalInfo = ref({
   name: 'Jobet Casquejo',
-  title: 'Salesforce Developer & Full Stack Engineer',
-  summary: 'Experienced Salesforce Developer with expertise in Apex, Lightning Web Components, and full-stack web development. Passionate about creating efficient business solutions and delivering exceptional user experiences.',
+  title: 'Junior Salesforce Developer/Administrator',
+  summary:
+    'Salesforce Engineer with 2+ years of experience in enhancing user interfaces and business processes through customized Apex classes and Lightning Web Components (LWC). Skilled in integrating Salesforce with external systems to boost operational efficiency. Proficient in workflow automation and experienced in collaborating with cross-functional teams to deliver seamless solutions. Passionate about driving technological innovation for a forward-thinking company.',
   email: 'jobetcasquejo221@gmail.com',
-  phone: '+63 XXX XXX XXXX',
-  location: 'Philippines',
-  linkedin: 'https://www.linkedin.com/in/jobet-casquejo/'
+  phone: '+639817153118',
+  location: 'Misamis Occidental, Philippines',
+  linkedin: 'https://www.linkedin.com/in/jobet-casquejo-921840232/',
 })
 
 // Professional Experience
 const experience = ref([
   {
     id: 1,
-    position: 'Senior Salesforce Developer',
-    company: 'Tech Solutions Inc.',
+    position: 'Junior Salesforce Developer/Administrator',
+    company: 'Erie Management Service',
     location: 'Remote',
-    startDate: 'Jan 2022',
+    startDate: 'Sep 2024',
     endDate: null,
-    description: 'Lead Salesforce development projects and mentor junior developers in best practices.',
+    description: 'Developing and customizing Salesforce solutions to manage complex business logic efficiently.',
     achievements: [
-      'Developed 15+ Lightning Web Components improving user productivity by 40%',
-      'Implemented complex Apex triggers and classes for business process automation',
-      'Led migration of Classic to Lightning Experience for 500+ users',
-      'Designed and implemented custom objects and workflows for sales processes'
+      'Developed and customized Apex Classes, Triggers, and Batch Jobs to manage complex business logic efficiently',
+      'Designed and implemented Lightning Web Components (LWC) to create engaging and responsive user interfaces',
+      'Built and optimized data models using Salesforce objects and schema customization',
+      'Streamlined business operations by automating workflows using Flow Builder, Process Builder, and Approval Processes',
+      'Collaborated with cross-functional teams for successful Salesforce integrations with external systems via REST and SOAP APIs',
+      'Customized user experiences through tailored page layouts, record types, and custom fields',
+      'Conducted data migration and transformation using Data Loader and Salesforce Import Wizard',
+      'Performed unit testing and debugging of Apex code to ensure optimal performance and reliability',
+      'Maintained security by configuring necessary profiles, roles, sharing rules, and field-level settings',
+      'Provided comprehensive support and training to end-users, along with creating technical documentation'
     ],
-    technologies: ['Salesforce', 'Apex', 'Lightning Web Components', 'SOQL', 'JavaScript', 'HTML', 'CSS']
+    technologies: ['Salesforce', 'Apex', 'Lightning Web Components', 'Flow Builder', 'Process Builder', 'REST API', 'SOAP API', 'Data Loader']
   },
   {
     id: 2,
-    position: 'Salesforce Developer',
-    company: 'Digital Innovations Ltd.',
-    location: 'Manila, Philippines',
-    startDate: 'Jun 2020',
-    endDate: 'Dec 2021',
-    description: 'Developed and maintained Salesforce applications for various business units.',
+    position: 'Junior Salesforce Developer/Administrator',
+    company: 'Aether Global',
+    location: 'Remote',
+    startDate: 'Sep 2024',
+    endDate: null,
+    description: 'Streamlining business processes and enhancing operational efficiency through Salesforce development.',
     achievements: [
-      'Built custom Lightning applications for inventory management',
-      'Integrated Salesforce with external APIs using REST/SOAP services',
-      'Created comprehensive test classes achieving 95%+ code coverage',
-      'Optimized SOQL queries reducing page load times by 60%'
+      'Developed and customized Apex Classes, Triggers, and Batch Jobs to streamline business processes, enhancing operational efficiency by 25%',
+      'Designed and implemented Lightning Web Components, providing dynamic and responsive user interfaces that improved user engagement',
+      'Optimized data models through comprehensive customization of Salesforce objects and relationships',
+      'Automation of workflows using Flow Builder and Process Builder, effectively reducing manual tasks by 30%',
+      'Integrated Salesforce with external systems via REST and SOAP APIs to improve data accessibility and functionality',
+      'Enhanced user experiences by customizing layouts and record types tailored to specific needs',
+      'Conducted extensive data migration using Data Loader and Salesforce Import Wizard',
+      'Performed meticulous unit testing, ensuring code reliability and high performance',
+      'Configured security roles and profiles to maintain data integrity',
+      'Trained and supported end-users by offering solutions and creating detailed technical documentation'
     ],
-    technologies: ['Salesforce', 'Apex', 'Visualforce', 'Lightning Components', 'REST API', 'SOAP API']
+    technologies: ['Salesforce', 'Apex', 'Lightning Web Components', 'Flow Builder', 'Process Builder', 'REST API', 'SOAP API', 'Data Loader']
   },
   {
     id: 3,
-    position: 'Full Stack Developer',
-    company: 'StartupXYZ',
-    location: 'Cebu, Philippines',
-    startDate: 'Jan 2019',
-    endDate: 'May 2020',
-    description: 'Developed web applications using modern JavaScript frameworks and backend technologies.',
+    position: 'Community Support',
+    company: 'StudevPH',
+    location: 'Remote',
+    startDate: 'Sep 2023',
+    endDate: null,
+    description: 'Contributing to coding communities and mentoring new developers.',
     achievements: [
-      'Built responsive web applications using Vue.js and React',
-      'Developed RESTful APIs using Node.js and Express',
-      'Implemented database designs using PostgreSQL and MongoDB',
-      'Deployed applications using Docker and AWS services'
+      'Actively contributed over 50 solutions in coding communities and forums',
+      'Mentored new members, offering career advice and project guidance for internship success',
+      'Led collaborative projects and hackathons, delivering innovative solutions and enhancing team development',
+      'Organized networking events and workshops, connecting over 100 students with industry professionals',
+      'Fostered inclusivity in IT by initiating study groups and coding circles, promoting diversity and a culture of learning'
     ],
-    technologies: ['Vue.js', 'React', 'Node.js', 'Express', 'PostgreSQL', 'MongoDB', 'Docker', 'AWS']
+    technologies: ['Community Management', 'Mentoring', 'Project Leadership', 'Event Organization']
+  },
+  {
+    id: 4,
+    position: 'Junior Developer',
+    company: 'AlphaSys',
+    location: 'Philippines',
+    startDate: 'Jan 2023',
+    endDate: 'Sep 2024',
+    description: 'Designed and evaluated code to enhance software features for various application requirements.',
+    achievements: [
+      'Designed and evaluated code to enhance software features for various application requirements',
+      'Resolved technical issues, aiding in the development of new features and functionalities',
+      'Collaborated closely with stakeholders and developers to translate requirements into effective code solutions',
+      'Analyzed and addressed root causes of production issues, improving operational stability',
+      'Automated processes to boost operational effectiveness by integrating Salesforce with external systems via REST/SOAP APIs',
+      'Pursued continuous learning and adaptation to new technologies, enhancing team collaboration and technical proficiency',
+      'Supported team objectives by leveraging advanced problem-solving skills to drive software development goals'
+    ],
+    technologies: ['Salesforce', 'REST API', 'SOAP API', 'Software Development', 'Problem Solving']
+  },
+  {
+    id: 5,
+    position: 'Java Application Developer',
+    company: 'USTP',
+    location: 'Philippines',
+    startDate: 'May 2022',
+    endDate: 'Jun 2022',
+    description: 'Spearheaded the development and enhancement of software applications using Java.',
+    achievements: [
+      'Spearheaded the development and enhancement of software applications, increasing efficiency by 15% through innovative coding practices',
+      'Resolved code errors efficiently to ensure seamless application functionality',
+      'Composed comprehensive documentation, maintaining full compliance with quality standards',
+      'Tackled various technical issues, reducing development delays and optimizing performance',
+      'Collaborated effectively with senior developers to integrate Java solutions into software and websites',
+      'Enhanced software performance significantly, boosting functionality efficiency by 20%',
+      'Updated knowledge of emerging Java technologies to sustain competitive advantage and foster innovation'
+    ],
+    technologies: ['Java', 'Software Development', 'Documentation', 'Performance Optimization']
   }
 ])
 
@@ -241,17 +451,13 @@ const experience = ref([
 const education = ref([
   {
     id: 1,
-    degree: 'Bachelor of Science in Computer Science',
-    institution: 'University of the Philippines',
-    location: 'Diliman, Quezon City',
-    startDate: '2015',
-    endDate: '2019',
-    description: 'Graduated Magna Cum Laude with specialization in Software Engineering',
-    achievements: [
-      'Dean\'s List for 6 consecutive semesters',
-      'Outstanding Thesis Award for "AI-Powered Business Process Automation"',
-      'President of Computer Science Student Organization'
-    ]
+    degree: 'Bachelor\'s Degree',
+    institution: 'University of Science and Technology of Southern Philippines',
+    location: 'Philippines',
+    startDate: 'Jun 2018',
+    endDate: 'Sep 2022',
+    description: 'Completed Bachelor\'s degree with focus on technology and engineering principles',
+    achievements: []
   }
 ])
 
@@ -260,46 +466,45 @@ const skills = ref([
   {
     category: 'Salesforce',
     items: [
-      { name: 'Apex', level: 95 },
+      { name: 'Salesforce', level: 95 },
+      { name: 'Apex', level: 90 },
       { name: 'Lightning Web Components', level: 90 },
-      { name: 'Salesforce Administration', level: 85 },
-      { name: 'SOQL/SOSL', level: 90 },
-      { name: 'Visualforce', level: 80 }
+      { name: 'Flow Builder', level: 85 },
+      { name: 'Process Builder', level: 85 },
+      { name: 'CRM', level: 90 }
     ]
   },
   {
-    category: 'Frontend Development',
+    category: 'Programming Languages',
     items: [
-      { name: 'JavaScript/TypeScript', level: 90 },
-      { name: 'Vue.js', level: 85 },
-      { name: 'React', level: 80 },
-      { name: 'HTML/CSS', level: 90 },
-      { name: 'Responsive Design', level: 85 }
+      { name: 'Java', level: 90 },
+      { name: 'Python', level: 85 },
+      { name: 'C++', level: 80 },
+      { name: 'Kotlin', level: 75 },
+      { name: 'SQL', level: 85 }
     ]
   },
   {
-    category: 'Backend Development',
+    category: 'Development Tools',
     items: [
-      { name: 'Node.js', level: 80 },
-      { name: 'Express.js', level: 75 },
-      { name: 'REST APIs', level: 85 },
-      { name: 'Database Design', level: 80 },
-      { name: 'PostgreSQL', level: 75 }
+      { name: 'Git', level: 90 },
+      { name: 'Docker', level: 80 },
+      { name: 'REST API', level: 85 },
+      { name: 'SOAP API', level: 80 },
+      { name: 'Data Loader', level: 85 }
     ]
   },
   {
-    category: 'Tools & Technologies',
+    category: 'Soft Skills',
     items: [
-      { name: 'Git/GitHub', level: 90 },
-      { name: 'Docker', level: 70 },
-      { name: 'AWS', level: 65 },
-      { name: 'Agile/Scrum', level: 85 },
-      { name: 'CI/CD', level: 70 }
+      { name: 'Teamwork', level: 95 },
+      { name: 'Problem Solving', level: 90 },
+      { name: 'Communication', level: 85 },
+      { name: 'Leadership', level: 80 },
+      { name: 'Mentoring', level: 85 }
     ]
   }
 ])
-
-
 
 // Methods
 const downloadResume = () => {
@@ -317,7 +522,11 @@ const printResume = () => {
   min-height: 100vh;
   padding: 2rem 0;
   background: var(--bg-color, #ffffff);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
 }
 
 .container {
@@ -684,12 +893,14 @@ const printResume = () => {
 
 .skill-progress {
   height: 100%;
-  background: linear-gradient(90deg, var(--primary-color, #3b82f6), var(--secondary-color, #8b5cf6));
+  background: linear-gradient(
+    90deg,
+    var(--primary-color, #3b82f6),
+    var(--secondary-color, #8b5cf6)
+  );
   border-radius: 4px;
   transition: width 0.3s ease;
 }
-
-
 
 /* Resume Actions */
 .resume-actions {
@@ -752,23 +963,299 @@ const printResume = () => {
 
 /* Print styles */
 @media print {
+  @page {
+    margin: 0.3in;
+    size: letter;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: auto !important;
+  }
+
+  /* Hide all navigation and layout elements during print */
+  .header,
+  .footer,
+  .nav,
+  .navbar,
+  .navigation,
+  nav,
+  header,
+  footer,
+  .layout > .header,
+  .layout > .footer,
+  .layout > nav,
+  .brand-text,
+  .nav-brand,
+  .nav-links,
+  .mobile-menu-toggle {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Hide any element containing 'Portfolio' text */
+  *:contains('Portfolio') {
+    display: none !important;
+  }
+
+  /* Ensure main content starts at top */
+  .main-content,
+  .layout .main-content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  /* Ensure only resume content is visible */
+  body * {
+    visibility: hidden;
+  }
+
+  .resume,
+  .resume * {
+    visibility: visible !important;
+  }
+
   .resume {
-    background: white;
-    color: black;
+    background: white !important;
+    color: black !important;
+    font-size: 12px;
+    line-height: 1.4;
+    margin: 0 !important;
+    padding: 0 !important;
   }
-  
+
+  .container {
+    max-width: none !important;
+    padding: 0.3in !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  .resume-header {
+    margin-bottom: 0.2in !important;
+    margin-top: 0 !important;
+    page-break-after: avoid;
+    padding-top: 0 !important;
+  }
+
+  .profile-section {
+    margin-bottom: 0.2in;
+  }
+
+  .name {
+    font-size: 24px !important;
+    margin-bottom: 0.1in;
+  }
+
+  .title {
+    font-size: 16px !important;
+    margin-bottom: 0.1in;
+  }
+
+  .summary {
+    font-size: 11px;
+    line-height: 1.3;
+    margin-bottom: 0.15in;
+  }
+
+  .contact-info {
+    font-size: 10px;
+  }
+
+  .contact-item {
+    margin-bottom: 0.05in;
+  }
+
+  .contact-item svg {
+    width: 12px;
+    height: 12px;
+  }
+
   .resume-actions {
-    display: none;
+    display: none !important;
   }
-  
+
+  .resume-content {
+    gap: 0.15in !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
   .resume-section {
     break-inside: avoid;
     page-break-inside: avoid;
+    margin-bottom: 0.25in;
+    padding: 0.15in;
+    border: 1px solid #ddd;
+    border-radius: 4px;
   }
-  
+
+  .section-title {
+    font-size: 14px !important;
+    margin-bottom: 0.15in;
+    padding-bottom: 0.05in;
+    border-bottom: 1px solid #333;
+  }
+
+  .section-title svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .timeline {
+    padding-left: 0.2in;
+  }
+
+  .timeline::before {
+    left: 0.1in;
+  }
+
   .timeline-item {
     break-inside: avoid;
     page-break-inside: avoid;
+    margin-bottom: 0.2in;
+  }
+
+  .timeline-marker {
+    left: -0.15in;
+    width: 8px;
+    height: 8px;
+    top: 0.05in;
+  }
+
+  .timeline-content {
+    padding: 0.1in;
+    border: 1px solid #ddd;
+  }
+
+  .job-header {
+    margin-bottom: 0.05in;
+  }
+
+  .job-title {
+    font-size: 13px !important;
+  }
+
+  .job-period {
+    font-size: 10px;
+  }
+
+  .job-company {
+    margin-bottom: 0.08in;
+    font-size: 11px;
+  }
+
+  .job-description {
+    font-size: 10px;
+    margin-bottom: 0.08in;
+  }
+
+  .job-achievements {
+    margin-bottom: 0.1in;
+    font-size: 10px;
+  }
+
+  .job-achievements li {
+    margin-bottom: 0.02in;
+  }
+
+  .job-technologies {
+    gap: 0.05in;
+  }
+
+  .tech-tag {
+    font-size: 8px;
+    padding: 0.02in 0.05in;
+    background: #f0f0f0 !important;
+    color: #333 !important;
+    border: 1px solid #ccc;
+  }
+
+  .education-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    padding: 0.1in;
+    margin-bottom: 0.15in;
+    border: 1px solid #ddd;
+  }
+
+  .education-header {
+    margin-bottom: 0.05in;
+  }
+
+  .education-degree {
+    font-size: 12px !important;
+  }
+
+  .education-period {
+    font-size: 10px;
+  }
+
+  .education-school {
+    font-size: 11px;
+    margin-bottom: 0.05in;
+  }
+
+  .education-description {
+    font-size: 10px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.15in;
+  }
+
+  .skill-category {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 0.15in;
+  }
+
+  .skill-category-title {
+    font-size: 12px !important;
+    margin-bottom: 0.08in;
+  }
+
+  .skill-item {
+    margin-bottom: 0.05in;
+  }
+
+  .skill-name {
+    font-size: 10px;
+  }
+
+  .skill-level {
+    font-size: 9px;
+  }
+
+  .skill-bar {
+    height: 4px;
+  }
+
+  .skill-progress {
+    background: #333 !important;
+  }
+
+  /* Ensure proper page breaks */
+  .resume-section:first-child {
+    page-break-before: avoid;
+  }
+
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Hide any decorative elements that don't print well */
+  .profile-img {
+    max-width: 1in;
+    max-height: 1in;
   }
 }
 
@@ -777,21 +1264,21 @@ const printResume = () => {
   .container {
     padding: 0 1rem;
   }
-  
+
   .resume-header {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .profile-section {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .name {
     font-size: 2rem;
   }
-  
+
   .job-header,
   .education-header,
   .certification-header {
@@ -799,18 +1286,18 @@ const printResume = () => {
     align-items: flex-start;
     gap: 0.5rem;
   }
-  
+
   .job-company,
   .education-school {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.25rem;
   }
-  
+
   .skills-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .resume-actions {
     flex-direction: column;
   }
@@ -820,23 +1307,23 @@ const printResume = () => {
   .resume {
     padding: 1rem 0;
   }
-  
+
   .resume-section {
     padding: 1.5rem;
   }
-  
+
   .timeline {
     padding-left: 1.5rem;
   }
-  
+
   .timeline-marker {
     left: -1.5rem;
   }
-  
+
   .name {
     font-size: 1.75rem;
   }
-  
+
   .section-title {
     font-size: 1.25rem;
   }
