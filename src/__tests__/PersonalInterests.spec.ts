@@ -173,7 +173,7 @@ describe('PersonalInterests.vue', () => {
       
       // Night owl fact
       expect(factItems[1].find('.fact-icon').text()).toBe('🌙')
-      expect(factItems[1].find('.fact-text').text()).toBe('My most productive coding hours are between 10 PM and 2 AM')
+      expect(factItems[1].find('.fact-text').text()).toBe('My most productive coding hours are between 10 PM and 7 AM')
       
       // Problem solving fact
       expect(factItems[2].find('.fact-icon').text()).toBe('🎯')
@@ -189,7 +189,7 @@ describe('PersonalInterests.vue', () => {
       
       // Space technology fact
       expect(factItems[5].find('.fact-icon').text()).toBe('🚀')
-      expect(factItems[5].find('.fact-text').text()).toBe('I dream of contributing to space technology projects someday')
+      expect(factItems[5].find('.fact-text').text()).toBe('I dream of building software for space exploration')
     })
   })
 
