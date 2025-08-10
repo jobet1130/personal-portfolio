@@ -13,9 +13,8 @@ export enum SkillCategory {
   BACKEND = 'Backend',
   DATABASE = 'Database',
   TOOLS = 'Tools & DevOps',
-  DESIGN = 'Design',
   MOBILE = 'Mobile',
-  OTHER = 'Other'
+  CRM = 'CRM'
 }
 
 export enum SkillLevel {
@@ -87,6 +86,14 @@ export const skills: Skill[] = [
     icon: "postgresql",
     description: "Open source relational database"
   },
+  {
+    id: 11,
+    name: "MySQL",
+    category: SkillCategory.DATABASE,
+    level: SkillLevel.INTERMEDIATE,
+    icon: "mysql",
+    description: "Popular open source relational database management system"
+  },
   
   // Tools & DevOps
   {
@@ -108,11 +115,24 @@ export const skills: Skill[] = [
   {
     id: 10,
     name: "Salesforce",
-    category: SkillCategory.OTHER,
+    category: SkillCategory.CRM,
     level: SkillLevel.ADVANCED,
     icon: "salesforce",
     description: "Cloud-based CRM platform and development environment"
-  }
+  },
+  
+  // Mobile Development
+  {
+    id: 12,
+    name: "React Native",
+    category: SkillCategory.MOBILE,
+    level: SkillLevel.INTERMEDIATE,
+    icon: "react",
+    description: "Cross-platform mobile app development framework"
+  },
+  
+  // Design Skills
+
 ];
 
 // Helper functions
