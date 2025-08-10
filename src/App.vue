@@ -1,11 +1,24 @@
 <script setup lang="ts">
 import Layout from './components/Layout.vue'
+import { useRoute } from 'vue-router'
+import { computed } from 'vue'
+
+const route = useRoute()
+
+// Define routes that should not use the layout (standalone pages)
+const standaloneRoutes = ['ProjectDetail']
+
+// Check if current route should use layout
+const shouldUseLayout = computed(() => {
+  return !standaloneRoutes.includes(route.name as string)
+})
 </script>
 
 <template>
-  <Layout>
+  <Layout v-if="shouldUseLayout">
     <router-view />
   </Layout>
+  <router-view v-else />
 </template>
 
 <style>
