@@ -14,12 +14,12 @@
           business requirements into efficient solutions that drive growth and productivity.
         </p>
         <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary">
+          <router-link to="/projects" class="btn btn-primary">
             Explore My Projects
-          </a>
-          <a href="#contact" class="btn btn-secondary">
+          </router-link>
+          <button @click="scrollToSection('contact')" class="btn btn-secondary">
             Let's Connect
-          </a>
+          </button>
         </div>
       </div>
       <div class="hero-image">
@@ -40,6 +40,18 @@ import { onMounted } from 'vue'
 onMounted(() => {
   // Add any hero animations or interactions here
 })
+
+const scrollToSection = (sectionId: string) => {
+  if (sectionId === 'contact') {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -123,6 +135,10 @@ onMounted(() => {
   transition: all 0.3s ease;
   border: 2px solid transparent;
   display: inline-block;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
 }
 
 .btn-primary {

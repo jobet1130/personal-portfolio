@@ -3,6 +3,9 @@ import Hero from '../../src/components/Hero.vue'
 
 describe('Hero Component', () => {
   beforeEach(() => {
+    cy.window().then((win) => {
+      cy.stub(win.console, 'error').as('consoleError')
+    })
     mount(Hero)
   })
 
@@ -44,24 +47,18 @@ describe('Hero Component', () => {
   })
 
   it('should display profile image placeholder', () => {
-    // Check image placeholder and SVG
+    // Check image placeholder and profile image
     cy.get('.image-placeholder').should('be.visible')
-    cy.get('.profile-svg').should('be.visible')
-
-    // Check SVG elements
-    cy.get('.profile-svg circle').should('have.length', 2)
-    cy.get('.profile-svg path').should('exist')
+    cy.get('.profile-image').should('be.visible')
+    cy.get('.profile-image').should('have.attr', 'src', '/__cypress/src/images/profile.jpg')
+    cy.get('.profile-image').should('have.attr', 'alt', 'Jobet P. Casquejo - Salesforce Developer')
   })
 
-  it('should show scroll indicator', () => {
-    // Check scroll indicator elements
-    cy.get('.scroll-indicator').should('be.visible')
-    cy.get('.scroll-arrow').should('be.visible')
-  })
+  // Note: Hero component doesn't include scroll indicator elements
 
   it('should have proper semantic structure', () => {
     // Check semantic HTML
-    cy.get('section#hero').should('exist')
+    cy.get('section#home').should('exist')
     cy.get('h1.hero-title').should('exist')
     cy.get('h2.hero-subtitle').should('exist')
     cy.get('p.hero-description').should('exist')
@@ -112,7 +109,7 @@ describe('Hero Component', () => {
 
   it('should have proper accessibility attributes', () => {
     // Check section has proper id
-    cy.get('section').should('have.attr', 'id', 'hero')
+    cy.get('section').should('have.attr', 'id', 'home')
 
     // Check heading hierarchy
     cy.get('h1').should('exist')
@@ -129,16 +126,13 @@ describe('Hero Component', () => {
     cy.get('.hero').should('exist')
 
     // No console errors should occur
-    cy.window().then((win) => {
-      expect(win.console.error).to.not.have.been.called
-    })
+    cy.get('@consoleError').should('not.have.been.called')
   })
 
   it('should have proper CSS animations', () => {
-    // Check that animated elements exist
-    cy.get('.hero-content').should('have.css', 'animation-name')
-    cy.get('.hero-image').should('have.css', 'animation-name')
-    cy.get('.scroll-indicator').should('have.css', 'animation-name')
+    // Check that animated elements exist and are visible
+    cy.get('.hero-content').should('be.visible').should('have.css', 'animation-name')
+    cy.get('.hero-image').should('be.visible').should('have.css', 'animation-name')
   })
 
   it('should maintain layout integrity across different screen sizes', () => {
