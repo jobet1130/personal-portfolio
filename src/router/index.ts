@@ -5,6 +5,8 @@ import ProjectsPage from '../pages/ProjectsPage.vue'
 import BlogPage from '../pages/BlogPage.vue'
 import ResumePage from '../pages/ResumePage.vue'
 import NotFound from '../pages/NotFound.vue'
+import BlogPostDetail from '../BlogPage/components/BlogPostDetail.vue'
+import GraphQLTest from '../BlogPage/components/GraphQLTest.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,6 +30,16 @@ const router = createRouter({
       path: '/blog',
       name: 'Blog',
       component: BlogPage
+    },
+    {
+      path: '/blog/:slug',
+      name: 'BlogPostDetail',
+      component: BlogPostDetail
+    },
+    {
+      path: '/test-graphql',
+      name: 'GraphQLTest',
+      component: GraphQLTest
     },
     {
       path: '/resume-page',

@@ -13,10 +13,13 @@ describe('Footer Component', () => {
 
   it('should display current year in copyright', () => {
     const currentYear = new Date().getFullYear()
-    cy.get('footer p').should('contain.text', `© ${currentYear} Portfolio. All rights reserved.`)
+    cy.get('.footer-content p').should('contain.text', `© ${currentYear} Portfolio. All rights reserved.`)
   })
 
   it('should render all social links', () => {
+    // Wait for the footer to be fully rendered
+    cy.get('.footer-content').should('be.visible')
+    
     cy.get('.social-links a').should('have.length', 4)
     cy.get('a[aria-label="GitHub"]').should('exist')
     cy.get('a[aria-label="LinkedIn"]').should('exist')
@@ -36,9 +39,10 @@ describe('Footer Component', () => {
   })
 
   it('should not have target="_blank" for email link', () => {
-    cy.get('a[aria-label="Email"]')
-      .should('not.have.attr', 'target')
-      .should('not.have.attr', 'rel')
+    cy.get('.footer-content').should('be.visible')
+    cy.get('a[aria-label="Email"]').should('exist')
+    cy.get('a[aria-label="Email"]').should('not.have.attr', 'target')
+    cy.get('a[aria-label="Email"]').should('not.have.attr', 'rel')
   })
 
   it('should have proper accessibility attributes', () => {

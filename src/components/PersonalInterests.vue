@@ -93,7 +93,7 @@ const funFacts = ref<FunFact[]>([
   },
   {
     icon: '🌙',
-    text: 'My most productive coding hours are between 10 PM and 2 AM'
+    text: 'My most productive coding hours are between 10 PM and 7 AM'
   },
   {
     icon: '🎯',
@@ -109,7 +109,7 @@ const funFacts = ref<FunFact[]>([
   },
   {
     icon: '🚀',
-    text: 'I dream of contributing to space technology projects someday'
+    text: 'I dream of building software for space exploration'
   }
 ])
 </script>

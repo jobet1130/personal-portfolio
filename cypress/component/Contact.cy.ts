@@ -109,10 +109,10 @@ describe('Contact Component', () => {
 
   it('should have hover effects on resume item', () => {
     // Hover over resume item
-    cy.get('.contact-item.clickable').trigger('mouseover')
+    cy.get('.contact-item.clickable').first().trigger('mouseover')
     
     // Check that hover state is applied (this might need adjustment based on actual CSS)
-    cy.get('.contact-item.clickable').should('have.css', 'cursor', 'pointer')
+    cy.get('.contact-item.clickable').first().should('have.css', 'cursor', 'pointer')
   })
 
   it('should have proper section structure', () => {

@@ -36,8 +36,8 @@ describe('Resume.vue', () => {
   describe('Personal Information', () => {
     it('displays personal information correctly', () => {
       expect(wrapper.find('.name').text()).toBe('Jobet Casquejo')
-      expect(wrapper.find('.title').text()).toBe('Salesforce Developer & Full Stack Engineer')
-      expect(wrapper.find('.summary').text()).toContain('Experienced Salesforce Developer')
+      expect(wrapper.find('.title').text()).toBe('Junior Salesforce Developer/Administrator')
+      expect(wrapper.find('.summary').text()).toContain('Salesforce Engineer with 2+ years of experience')
     })
 
     it('displays profile image with correct attributes', () => {
@@ -52,13 +52,13 @@ describe('Resume.vue', () => {
       expect(contactItems).toHaveLength(4) // email, phone, location, linkedin
       
       expect(wrapper.text()).toContain('jobetcasquejo221@gmail.com')
-      expect(wrapper.text()).toContain('+63 XXX XXX XXXX')
-      expect(wrapper.text()).toContain('Philippines')
+      expect(wrapper.text()).toContain('+639817153118')
+      expect(wrapper.text()).toContain('Misamis Occidental, Philippines')
       expect(wrapper.text()).toContain('LinkedIn')
     })
 
     it('renders LinkedIn as a clickable link', () => {
-      const linkedinLink = wrapper.find('a[href="https://www.linkedin.com/in/jobet-casquejo/"]')
+      const linkedinLink = wrapper.find('a[href="https://www.linkedin.com/in/jobet-casquejo-921840232/"]')
       expect(linkedinLink.exists()).toBe(true)
       expect(linkedinLink.attributes('target')).toBe('_blank')
       expect(linkedinLink.attributes('rel')).toBe('noopener noreferrer')
@@ -73,15 +73,15 @@ describe('Resume.vue', () => {
 
     it('displays timeline structure', () => {
       expect(wrapper.find('.timeline').exists()).toBe(true)
-      expect(wrapper.findAll('.timeline-item')).toHaveLength(3) // 3 jobs
+      expect(wrapper.findAll('.timeline-item')).toHaveLength(5) // 5 jobs
     })
 
     it('displays job information correctly', () => {
       const firstJob = wrapper.findAll('.timeline-item')[0]
-      expect(firstJob.find('.job-title').text()).toBe('Senior Salesforce Developer')
-      expect(firstJob.find('.job-company').text()).toContain('Tech Solutions Inc.')
+      expect(firstJob.find('.job-title').text()).toBe('Junior Salesforce Developer/Administrator')
+      expect(firstJob.find('.job-company').text()).toContain('Erie Management Service')
       expect(firstJob.find('.job-location').text()).toBe('Remote')
-      expect(firstJob.find('.job-period').text()).toBe('Jan 2022 - Present')
+      expect(firstJob.find('.job-period').text()).toBe('Sep 2024 - Present')
     })
 
     it('displays job achievements and technologies', () => {
@@ -108,19 +108,18 @@ describe('Resume.vue', () => {
 
     it('displays education information correctly', () => {
       const education = wrapper.find('.education-item')
-      expect(education.find('.education-degree').text()).toBe('Bachelor of Science in Computer Science')
-      expect(education.find('.education-school').text()).toContain('University of the Philippines')
-      expect(education.find('.education-location').text()).toBe('Diliman, Quezon City')
-      expect(education.find('.education-period').text()).toBe('2015 - 2019')
+      expect(education.find('.education-degree').text()).toBe('Bachelor\'s Degree')
+      expect(education.find('.education-school').text()).toContain('University of Science and Technology of Southern Philippines')
+      expect(education.find('.education-location').text()).toBe('Philippines')
+      expect(education.find('.education-period').text()).toBe('Jun 2018 - Sep 2022')
     })
 
     it('displays education description and achievements', () => {
       const education = wrapper.find('.education-item')
-      expect(education.find('.education-description').text()).toContain('Graduated Magna Cum Laude')
+      expect(education.find('.education-description').text()).toContain('Completed Bachelor\'s degree with focus on technology')
       
       const achievements = education.findAll('.education-achievements li')
-      expect(achievements.length).toBe(3)
-      expect(achievements[0].text()).toContain('Dean\'s List')
+      expect(achievements.length).toBe(0) // No achievements listed
     })
   })
 
@@ -136,9 +135,9 @@ describe('Resume.vue', () => {
       
       const categoryTitles = skillCategories.map(cat => cat.find('.skill-category-title').text())
       expect(categoryTitles).toContain('Salesforce')
-      expect(categoryTitles).toContain('Frontend Development')
-      expect(categoryTitles).toContain('Backend Development')
-      expect(categoryTitles).toContain('Tools & Technologies')
+      expect(categoryTitles).toContain('Programming Languages')
+      expect(categoryTitles).toContain('Development Tools')
+      expect(categoryTitles).toContain('Soft Skills')
     })
 
     it('displays skill items with progress bars', () => {
@@ -147,7 +146,7 @@ describe('Resume.vue', () => {
       expect(skillItems.length).toBeGreaterThan(0)
       
       const firstSkill = skillItems[0]
-      expect(firstSkill.find('.skill-name').text()).toBe('Apex')
+      expect(firstSkill.find('.skill-name').text()).toBe('Salesforce')
       expect(firstSkill.find('.skill-level').text()).toBe('95%')
       expect(firstSkill.find('.skill-progress').exists()).toBe(true)
     })
@@ -179,7 +178,7 @@ describe('Resume.vue', () => {
     })
 
     it('has proper ARIA attributes for external links', () => {
-      const linkedinLink = wrapper.find('a[href="https://www.linkedin.com/in/jobet-casquejo/"]')
+      const linkedinLink = wrapper.find('a[href="https://www.linkedin.com/in/jobet-casquejo-921840232/"]')
       expect(linkedinLink.attributes('rel')).toBe('noopener noreferrer')
     })
 
@@ -201,7 +200,7 @@ describe('Resume.vue', () => {
 
     it('has timeline markers for experience items', () => {
       const timelineMarkers = wrapper.findAll('.timeline-marker')
-      expect(timelineMarkers).toHaveLength(3)
+      expect(timelineMarkers).toHaveLength(5)
     })
   })
 
