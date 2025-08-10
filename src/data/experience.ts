@@ -16,169 +16,162 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
-    id: 'senior-frontend-developer-2023',
-    company: 'TechCorp Solutions',
-    position: 'Senior Frontend Developer',
-    location: 'San Francisco, CA',
-    startDate: '2023-01',
+    id: 'erie-management-2024',
+    company: 'Erie Management Service',
+    position: 'Junior Salesforce Developer/Administrator',
+    location: 'Remote',
+    startDate: '2024-09',
     endDate: null, // Current position
-    description: 'Leading frontend development initiatives and mentoring junior developers in a fast-paced startup environment.',
+    description: 'Developing and customizing Salesforce solutions to manage complex business logic efficiently.',
     responsibilities: [
-      'Lead development of customer-facing web applications',
-      'Architect and implement scalable frontend solutions',
-      'Mentor junior developers and conduct code reviews',
-      'Collaborate with design and backend teams',
-      'Optimize application performance and user experience'
+      'Develop and customize Apex Classes, Triggers, and Batch Jobs',
+      'Design and implement Lightning Web Components (LWC)',
+      'Build and optimize data models using Salesforce objects',
+      'Automate workflows using Flow Builder and Process Builder',
+      'Integrate Salesforce with external systems via REST and SOAP APIs'
     ],
     technologies: [
-      'Vue.js 3',
-      'TypeScript',
-      'Vite',
-      'Tailwind CSS',
-      'Node.js',
-      'GraphQL',
-      'Docker',
-      'AWS'
+      'Salesforce',
+      'Apex',
+      'Lightning Web Components',
+      'Flow Builder',
+      'Process Builder',
+      'REST API',
+      'SOAP API',
+      'Data Loader'
     ],
     achievements: [
-      'Improved application load time by 40%',
-      'Led migration from Vue 2 to Vue 3',
-      'Implemented comprehensive testing strategy',
-      'Reduced bug reports by 60%'
+      'Developed and customized Apex Classes, Triggers, and Batch Jobs to manage complex business logic efficiently',
+      'Designed and implemented Lightning Web Components (LWC) to create engaging and responsive user interfaces',
+      'Built and optimized data models using Salesforce objects and schema customization',
+      'Streamlined business operations by automating workflows using Flow Builder, Process Builder, and Approval Processes',
+      'Collaborated with cross-functional teams for successful Salesforce integrations with external systems via REST and SOAP APIs'
     ],
-    companyWebsite: 'https://techcorp.example.com',
     type: 'full-time'
   },
   {
-    id: 'frontend-developer-2021',
-    company: 'Digital Innovations Inc.',
-    position: 'Frontend Developer',
+    id: 'aether-global-2024',
+    company: 'Aether Global',
+    position: 'Junior Salesforce Developer/Administrator',
     location: 'Remote',
-    startDate: '2021-06',
-    endDate: '2022-12',
-    description: 'Developed and maintained multiple client projects using modern JavaScript frameworks.',
+    startDate: '2024-09',
+    endDate: null,
+    description: 'Streamlining business processes and enhancing operational efficiency through Salesforce development.',
     responsibilities: [
-      'Build responsive web applications',
-      'Implement pixel-perfect designs',
-      'Integrate with RESTful APIs',
-      'Write unit and integration tests',
-      'Participate in agile development process'
+      'Develop and customize Apex Classes, Triggers, and Batch Jobs',
+      'Design and implement Lightning Web Components',
+      'Optimize data models through Salesforce objects customization',
+      'Automate workflows using Flow Builder and Process Builder',
+      'Integrate Salesforce with external systems via APIs'
     ],
     technologies: [
-      'React',
-      'Vue.js',
-      'JavaScript',
-      'SASS',
-      'Webpack',
-      'Jest',
-      'Cypress',
-      'Git'
+      'Salesforce',
+      'Apex',
+      'Lightning Web Components',
+      'Flow Builder',
+      'Process Builder',
+      'REST API',
+      'SOAP API',
+      'Data Loader'
     ],
     achievements: [
-      'Delivered 15+ client projects on time',
-      'Implemented automated testing pipeline',
-      'Improved code quality standards',
-      'Mentored 2 junior developers'
+      'Developed and customized Apex Classes, Triggers, and Batch Jobs to streamline business processes, enhancing operational efficiency by 25%',
+      'Designed and implemented Lightning Web Components, providing dynamic and responsive user interfaces that improved user engagement',
+      'Optimized data models through comprehensive customization of Salesforce objects and relationships',
+      'Automation of workflows using Flow Builder and Process Builder, effectively reducing manual tasks by 30%',
+      'Integrated Salesforce with external systems via REST and SOAP APIs to improve data accessibility and functionality'
     ],
-    companyWebsite: 'https://digitalinnovations.example.com',
     type: 'full-time'
   },
   {
-    id: 'junior-developer-2020',
-    company: 'StartupXYZ',
-    position: 'Junior Web Developer',
-    location: 'New York, NY',
-    startDate: '2020-03',
-    endDate: '2021-05',
-    description: 'Started my professional journey building web applications and learning industry best practices.',
-    responsibilities: [
-      'Develop frontend components',
-      'Fix bugs and implement features',
-      'Collaborate with senior developers',
-      'Write documentation',
-      'Participate in daily standups'
-    ],
-    technologies: [
-      'HTML5',
-      'CSS3',
-      'JavaScript',
-      'jQuery',
-      'Bootstrap',
-      'PHP',
-      'MySQL',
-      'Git'
-    ],
-    achievements: [
-      'Successfully completed onboarding program',
-      'Contributed to 5 major feature releases',
-      'Improved page load speeds by 25%',
-      'Received "Rising Star" award'
-    ],
-    companyWebsite: 'https://startupxyz.example.com',
-    type: 'full-time'
-  },
-  {
-    id: 'freelance-developer-2019',
-    company: 'Freelance',
-    position: 'Web Developer',
+    id: 'studevph-2023',
+    company: 'StudevPH',
+    position: 'Community Support',
     location: 'Remote',
-    startDate: '2019-01',
-    endDate: '2020-02',
-    description: 'Provided web development services to small businesses and startups.',
+    startDate: '2023-09',
+    endDate: null,
+    description: 'Contributing to coding communities and mentoring new developers.',
     responsibilities: [
-      'Build custom websites for clients',
-      'Maintain existing web applications',
-      'Provide technical consultation',
-      'Manage client relationships',
-      'Handle project timelines and deliverables'
+      'Contribute solutions in coding communities and forums',
+      'Mentor new members and provide career guidance',
+      'Lead collaborative projects and hackathons',
+      'Organize networking events and workshops',
+      'Foster inclusivity in IT through study groups'
     ],
     technologies: [
-      'WordPress',
-      'HTML5',
-      'CSS3',
-      'JavaScript',
-      'PHP',
-      'MySQL',
-      'Photoshop'
+      'Community Management',
+      'Mentoring',
+      'Project Leadership',
+      'Event Organization'
     ],
     achievements: [
-      'Completed 20+ client projects',
-      'Maintained 98% client satisfaction rate',
-      'Built long-term client relationships',
-      'Developed project management skills'
+      'Actively contributed over 50 solutions in coding communities and forums',
+      'Mentored new members, offering career advice and project guidance for internship success',
+      'Led collaborative projects and hackathons, delivering innovative solutions and enhancing team development',
+      'Organized networking events and workshops, connecting over 100 students with industry professionals',
+      'Fostered inclusivity in IT by initiating study groups and coding circles, promoting diversity and a culture of learning'
     ],
-    type: 'freelance'
+    type: 'part-time'
   },
   {
-    id: 'intern-developer-2018',
-    company: 'WebTech Agency',
-    position: 'Web Development Intern',
-    location: 'Los Angeles, CA',
-    startDate: '2018-06',
-    endDate: '2018-12',
-    description: 'Gained hands-on experience in web development while completing my studies.',
+    id: 'alphasys-2023',
+    company: 'AlphaSys',
+    position: 'Junior Developer',
+    location: 'Philippines',
+    startDate: '2023-01',
+    endDate: '2024-09',
+    description: 'Designed and evaluated code to enhance software features for various application requirements.',
     responsibilities: [
-      'Assist senior developers with projects',
-      'Learn web development best practices',
-      'Create simple web pages and components',
-      'Test websites across different browsers',
-      'Document development processes'
+      'Design and evaluate code to enhance software features',
+      'Resolve technical issues and develop new functionalities',
+      'Collaborate with stakeholders and developers',
+      'Analyze and address root causes of production issues',
+      'Automate processes to boost operational effectiveness'
     ],
     technologies: [
-      'HTML5',
-      'CSS3',
-      'JavaScript',
-      'jQuery',
-      'Git',
-      'Adobe Creative Suite'
+      'Salesforce',
+      'REST API',
+      'SOAP API',
+      'Software Development',
+      'Problem Solving'
     ],
     achievements: [
-      'Completed 6-month internship program',
-      'Contributed to 3 client projects',
-      'Learned version control with Git',
-      'Received offer for full-time position'
+      'Designed and evaluated code to enhance software features for various application requirements',
+      'Resolved technical issues, aiding in the development of new features and functionalities',
+      'Collaborated closely with stakeholders and developers to translate requirements into effective code solutions',
+      'Analyzed and addressed root causes of production issues, improving operational stability',
+      'Automated processes to boost operational effectiveness by integrating Salesforce with external systems via REST/SOAP APIs'
     ],
-    companyWebsite: 'https://webtechagency.example.com',
+    type: 'full-time'
+  },
+  {
+    id: 'ustp-2022',
+    company: 'USTP',
+    position: 'Java Application Developer',
+    location: 'Philippines',
+    startDate: '2022-05',
+    endDate: '2022-06',
+    description: 'Spearheaded the development and enhancement of software applications using Java.',
+    responsibilities: [
+      'Develop and enhance software applications',
+      'Resolve code errors for seamless functionality',
+      'Compose comprehensive documentation',
+      'Tackle technical issues and optimize performance',
+      'Collaborate with senior developers on Java solutions'
+    ],
+    technologies: [
+      'Java',
+      'Software Development',
+      'Documentation',
+      'Performance Optimization'
+    ],
+    achievements: [
+      'Spearheaded the development and enhancement of software applications, increasing efficiency by 15% through innovative coding practices',
+      'Resolved code errors efficiently to ensure seamless application functionality',
+      'Composed comprehensive documentation, maintaining full compliance with quality standards',
+      'Tackled various technical issues, reducing development delays and optimizing performance',
+      'Enhanced software performance significantly, boosting functionality efficiency by 20%'
+    ],
     type: 'internship'
   }
 ]
