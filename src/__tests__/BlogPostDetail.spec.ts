@@ -18,6 +18,7 @@ vi.mock('../BlogPage/services/graphql', () => ({
 const mockRouter = createRouter({
   history: createWebHistory(),
   routes: [
+    { path: '/', component: { template: '<div>Home</div>' } },
     { path: '/blog/:slug', component: BlogPostDetail },
     { path: '/blog', component: { template: '<div>Blog</div>' } },
   ],
@@ -34,6 +35,12 @@ Object.defineProperty(navigator, 'clipboard', {
   value: {
     writeText: vi.fn().mockResolvedValue(undefined),
   },
+  writable: true,
+})
+
+// Mock window.alert
+Object.defineProperty(window, 'alert', {
+  value: vi.fn(),
   writable: true,
 })
 
