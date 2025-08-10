@@ -150,7 +150,11 @@ describe('Hero.vue', () => {
   })
 
   it('renders without errors', () => {
-    expect(() => mount(Hero)).not.toThrow()
+    expect(() => mount(Hero, {
+      global: {
+        plugins: [router],
+      },
+    })).not.toThrow()
   })
 
   it('has responsive structure', () => {
