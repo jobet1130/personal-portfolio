@@ -7,7 +7,7 @@ describe('Navbar Component', () => {
 
   beforeEach(() => {
     // Prevent Vue DevTools errors from failing tests
-    cy.on('uncaught:exception', (err, runnable) => {
+    cy.on('uncaught:exception', (err, _runnable) => {
       if (err.message.includes('VUE_DEVTOOLS_KIT_ACTIVE_APP_RECORD')) {
         return false
       }

@@ -303,7 +303,7 @@ describe('Blog Functionality', () => {
 
     it('should handle like button interaction', () => {
       cy.get('.stat-button').then(($btn) => {
-        const initialLikes = $btn.text().trim()
+        const _initialLikes = $btn.text().trim()
 
         // Click like button
         cy.wrap($btn).click()
