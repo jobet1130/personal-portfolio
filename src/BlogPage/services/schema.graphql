@@ -1,0 +1,62 @@
+type Query {
+  posts: [BlogPost!]!
+  post(id: ID!): BlogPost
+  postBySlug(slug: String!): BlogPost
+  categories: [BlogCategory!]!
+  featuredPosts: [BlogPost!]!
+  postsByCategory(categoryId: String!): [BlogPost!]!
+  searchPosts(query: String!): [BlogPost!]!
+}
+
+type BlogPost {
+  id: ID!
+  title: String!
+  slug: String!
+  excerpt: String!
+  content: String!
+  author: String!
+  publishedDate: String!
+  updatedDate: String
+  tags: [String!]!
+  category: String!
+  featuredImage: String!
+  readTime: Int!
+  isPublished: Boolean!
+  isFeatured: Boolean!
+  views: Int!
+  likes: Int!
+  seoTitle: String
+  seoDescription: String
+}
+
+type BlogCategory {
+  id: ID!
+  name: String!
+  description: String!
+  color: String!
+  icon: String!
+}
+
+input BlogPostInput {
+  title: String!
+  slug: String!
+  excerpt: String!
+  content: String!
+  author: String!
+  tags: [String!]!
+  category: String!
+  featuredImage: String!
+  readTime: Int!
+  isPublished: Boolean!
+  isFeatured: Boolean!
+  seoTitle: String
+  seoDescription: String
+}
+
+type Mutation {
+  createPost(input: BlogPostInput!): BlogPost!
+  updatePost(id: ID!, input: BlogPostInput!): BlogPost!
+  deletePost(id: ID!): Boolean!
+  incrementViews(id: ID!): BlogPost!
+  toggleLike(id: ID!): BlogPost!
+}

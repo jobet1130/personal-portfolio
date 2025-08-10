@@ -1,14 +1,34 @@
 <template>
-  <div>
+  <div class="home-page">
     <Hero />
+    <div class="section-spacing">
+      <Skills />
+    </div>
+    <div class="section-spacing">
+      <PersonalInterests />
+    </div>
+    <div class="section-spacing">
+      <Contact />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import Hero from '../components/Hero.vue'
+import Skills from '../components/Skills.vue'
+import PersonalInterests from '../components/PersonalInterests.vue'
+import Contact from '../components/Contact.vue'
 </script>
 
 <style scoped>
+.home-page {
+  min-height: 100vh;
+}
+
+.section-spacing {
+  margin-top: 1.5rem;
+}
+
 .section {
   padding: 4rem 2rem;
   max-width: 1200px;
@@ -34,6 +54,10 @@ import Hero from '../components/Hero.vue'
 
 
 @media (max-width: 768px) {
+  .section-spacing {
+    margin-top: 1rem;
+  }
+  
   .section {
     padding: 4rem 1rem;
   }
