@@ -501,6 +501,9 @@ describe('BlogPostDetail', () => {
   })
 
   it('handles error when loading post fails', async () => {
+    // Mock console.error to suppress expected error logging
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
+    
     vi.mocked(blogGraphQL.postBySlug).mockRejectedValue(new Error('Network error'))
 
     await mockRouter.isReady()
@@ -515,6 +518,12 @@ describe('BlogPostDetail', () => {
 
     expect(wrapper.find('.error-container').exists()).toBe(true)
     expect(wrapper.text()).toContain('Failed to load article')
+    
+    // Verify that the error was logged
+    expect(consoleSpy).toHaveBeenCalledWith('Error loading post:', expect.any(Error))
+    
+    // Restore console.error
+    consoleSpy.mockRestore()
   })
 
   it('displays author avatar placeholder correctly', async () => {
