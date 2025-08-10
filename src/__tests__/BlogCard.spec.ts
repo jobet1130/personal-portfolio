@@ -8,6 +8,7 @@ import type { BlogPost } from '../data/blog'
 const mockRouter = createRouter({
   history: createWebHistory(),
   routes: [
+    { path: '/', component: { template: '<div>Home</div>' } },
     { path: '/blog/:slug', component: { template: '<div>Blog Post</div>' } },
     { path: '/blog', component: { template: '<div>Blog</div>' } },
   ],

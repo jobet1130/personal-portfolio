@@ -87,9 +87,10 @@ const mockRelatedPosts = [
 ]
 
 describe('BlogPostDetail', () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     vi.clearAllMocks()
-    mockRouter.push('/blog/test-blog-post')
+    await mockRouter.push('/blog/test-blog-post')
+    await mockRouter.isReady()
   })
 
   it('renders loading state initially', async () => {
@@ -502,6 +503,7 @@ describe('BlogPostDetail', () => {
   it('handles error when loading post fails', async () => {
     vi.mocked(blogGraphQL.postBySlug).mockRejectedValue(new Error('Network error'))
 
+    await mockRouter.isReady()
     const wrapper = mount(BlogPostDetail, {
       global: {
         plugins: [mockRouter],
