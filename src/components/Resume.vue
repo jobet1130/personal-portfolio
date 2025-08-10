@@ -491,7 +491,8 @@ const skills = ref([
       { name: 'Docker', level: 80 },
       { name: 'REST API', level: 85 },
       { name: 'SOAP API', level: 80 },
-      { name: 'Data Loader', level: 85 }
+      { name: 'Data Loader', level: 85 },
+      { name: 'MySQL', level: 80 }
     ]
   },
   {
