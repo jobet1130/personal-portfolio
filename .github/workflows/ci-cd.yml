@@ -237,14 +237,7 @@ jobs:
     name: Notify on Pipeline Failure
     runs-on: ubuntu-latest
     if: failure()
-    needs:
-      [
-        test,
-        build,
-        docker,
-        manual-validation,
-        deploy,
-      ]
+    needs: [test, build, docker, manual-validation, deploy]
 
     permissions:
       contents: write
@@ -308,13 +301,7 @@ jobs:
   notify-on-success:
     runs-on: ubuntu-latest
     if: success() && (github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true))
-    needs: [
-      test,
-      build,
-      docker,
-      manual-validation,
-      deploy,
-    ]
+    needs: [test, build, docker, manual-validation, deploy]
 
     permissions:
       contents: read
@@ -376,7 +363,7 @@ jobs:
             <p><small>This is an automated notification from the CI/CD pipeline.</small></p>
 
       - name: Revert on critical failure
-        if: contains(github.ref, 'master') || contains(github.ref, 'main')
+        if: contains(github.ref, 'master') || contains(github.ref, 'master')
         run: |
           echo "🔄 Critical failure detected on main branch"
           echo "Initiating revert process..."
