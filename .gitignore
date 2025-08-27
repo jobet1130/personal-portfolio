@@ -28,7 +28,6 @@ coverage
 /robot/reports/
 *.html
 *.xml
-*.png
 
 # Editor directories and files
 .vscode/*
