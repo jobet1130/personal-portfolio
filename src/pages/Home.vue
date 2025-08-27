@@ -5,9 +5,6 @@
       <Skills />
     </div>
     <div class="section-spacing">
-      <PersonalInterests />
-    </div>
-    <div class="section-spacing">
       <Contact />
     </div>
   </div>
@@ -16,7 +13,6 @@
 <script setup lang="ts">
 import Hero from '../components/Hero.vue'
 import Skills from '../components/Skills.vue'
-import PersonalInterests from '../components/PersonalInterests.vue'
 import Contact from '../components/Contact.vue'
 </script>
 
@@ -51,21 +47,19 @@ import Contact from '../components/Contact.vue'
   margin: 0 auto;
 }
 
-
-
 @media (max-width: 768px) {
   .section-spacing {
     margin-top: 1rem;
   }
-  
+
   .section {
     padding: 4rem 1rem;
   }
-  
+
   .section h2 {
     font-size: 2rem;
   }
-  
+
   .section p {
     font-size: 1rem;
   }

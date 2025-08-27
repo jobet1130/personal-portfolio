@@ -8,10 +8,15 @@
         <li><router-link to="/" @click="closeMobileMenu">Home</router-link></li>
         <li><router-link to="/about" @click="closeMobileMenu">About</router-link></li>
         <li><router-link to="/projects" @click="closeMobileMenu">Projects</router-link></li>
-        <li><router-link to="/blog" @click="closeMobileMenu">Blog</router-link></li>
         <li><router-link to="/resume" @click="closeMobileMenu">Resume</router-link></li>
       </ul>
-      <button class="mobile-menu-toggle" @click="toggleMobileMenu" :class="{ 'active': isMobileMenuOpen }" aria-label="Toggle mobile menu" :aria-expanded="isMobileMenuOpen">
+      <button
+        class="mobile-menu-toggle"
+        @click="toggleMobileMenu"
+        :class="{ active: isMobileMenuOpen }"
+        aria-label="Toggle mobile menu"
+        :aria-expanded="isMobileMenuOpen"
+      >
         <span></span>
         <span></span>
         <span></span>
