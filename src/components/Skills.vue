@@ -77,7 +77,7 @@ import {
 const iconComponents = {
   vue: () =>
     h('img', {
-      src: './public/images/vue.png',
+      src: '/images/vue.png',
       alt: 'Vue.js Logo',
       style: {
         width: '100%',
@@ -87,7 +87,7 @@ const iconComponents = {
     }),
   react: () =>
     h('img', {
-      src: './public/images/reactJS.png',
+      src: '/images/reactJS.png',
       alt: 'React Logo',
       style: {
         width: '100%',
@@ -98,7 +98,7 @@ const iconComponents = {
 
   typescript: () =>
     h('img', {
-      src: './public/images/Typescript.svg.png',
+      src: '/images/Typescript.svg.png',
       alt: 'TypeScript Logo',
       style: {
         width: '100%',
@@ -109,7 +109,7 @@ const iconComponents = {
 
   javascript: () =>
     h('img', {
-      src: './public/images/javascript.png',
+      src: '/images/javascript.png',
       alt: 'JavaScript Logo',
       style: {
         width: '100%',
@@ -120,7 +120,7 @@ const iconComponents = {
 
   python: () =>
     h('img', {
-      src: './public/images/python.png',
+      src: '/images/python.png',
       alt: 'Python Logo',
       style: {
         width: '100%',
@@ -131,7 +131,7 @@ const iconComponents = {
 
   java: () =>
     h('img', {
-      src: './public/images/java.png',
+      src: '/images/java.png',
       alt: 'Java Logo',
       style: {
         width: '100%',
@@ -142,7 +142,7 @@ const iconComponents = {
 
   postgresql: () =>
     h('img', {
-      src: './public/images/postgresql.png',
+      src: '/images/postgresql.png',
       alt: 'PostgreSQL Logo',
       style: {
         width: '100%',
@@ -153,7 +153,7 @@ const iconComponents = {
 
   mysql: () =>
     h('img', {
-      src: './public/images/mysql.png',
+      src: '/images/mysql.png',
       alt: 'MySQL Logo',
       style: {
         width: '100%',
@@ -164,7 +164,7 @@ const iconComponents = {
 
   git: () =>
     h('img', {
-      src: './public/images/git.png',
+      src: '/images/git.png',
       alt: 'Git Logo',
       style: {
         width: '100%',
@@ -175,7 +175,7 @@ const iconComponents = {
 
   docker: () =>
     h('img', {
-      src: './public/images/docker.png',
+      src: '/images/docker.png',
       alt: 'Docker Logo',
       style: {
         width: '100%',
@@ -186,7 +186,7 @@ const iconComponents = {
 
   salesforce: () =>
     h('img', {
-      src: './public/images/salesforce.png',
+      src: '/images/salesforce.png',
       alt: 'Docker Logo',
       style: {
         width: '100%',
