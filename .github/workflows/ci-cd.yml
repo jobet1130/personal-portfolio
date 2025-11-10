@@ -257,7 +257,7 @@ jobs:
           echo "actor=${{ github.actor }}" >> $GITHUB_OUTPUT
 
       - name: Send failure notification email
-        uses: dawidd6/action-send-mail@v3
+        uses: dawidd6/action-send-mail@v6
         with:
           server_address: smtp.gmail.com
           server_port: 587
@@ -321,7 +321,7 @@ jobs:
           echo "actor=${{ github.actor }}" >> $GITHUB_OUTPUT
 
       - name: Send success notification email
-        uses: dawidd6/action-send-mail@v3
+        uses: dawidd6/action-send-mail@v6
         with:
           server_address: smtp.gmail.com
           server_port: 587
@@ -385,7 +385,7 @@ jobs:
 
       - name: Send revert notification
         if: contains(github.ref, 'master') || contains(github.ref, 'main')
-        uses: dawidd6/action-send-mail@v3
+        uses: dawidd6/action-send-mail@v6
         with:
           server_address: smtp.gmail.com
           server_port: 587
